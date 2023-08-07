@@ -56,81 +56,289 @@ Bonus Part:
 
 1. What are UNIX signals?
 
-1.1 Only SIGUSR1 and SIGUSR2 signals are permitted for use.
-
 UNIX OPERATING SYSTEMS:
 
-A Unix operating system refers to a family of multitasking, multiuser computer operating systems that follow the design principles established by the original Unix system.
+- A Unix operating system refers to a family of multitasking, multiuser computer operating systems that follow the design principles established by the original Unix system.
 
 Key characteristics of Unix operating systems include:
 
-Multiuser: Unix systems are designed to support multiple users simultaneously. Each user has their own account, home directory, and permissions. Users can log in and run processes concurrently, while the operating system ensures isolation between users.
+Multiuser: 
+- Unix systems are designed to support multiple users simultaneously. Each user has their own account, home directory, and permissions. Users can log in and run processes concurrently, while the operating system ensures isolation between users.
 
-Multitasking: Unix allows multiple processes to run simultaneously, sharing the system's resources like CPU time and memory. The operating system's scheduler determines which process gets executed and when.
+Multitasking: 
+- Unix allows multiple processes to run simultaneously, sharing the system's resources like CPU time and memory. The operating system's scheduler determines which process gets executed and when.
 
-Shell: Unix systems use a command-line interface known as a shell. A shell is a program that allows users to interact with the operating system by typing commands. Various shells exist, such as Bash, sh, csh, and more.
+Shell: 
+- Unix systems use a command-line interface known as a shell. A shell is a program that allows users to interact with the operating system by typing commands. Various shells exist, such as Bash, sh, csh, and more.
 
-Modular Design: Unix is built on a modular design, with each component (utilities, libraries, etc.) designed to perform a specific task. This modular nature makes it easier to develop and maintain software.
+Modular Design: 
+- Unix is built on a modular design, with each component (utilities, libraries, etc.) designed to perform a specific task. This modular nature makes it easier to develop and maintain software.
 
-Hierarchical File System: Unix systems use a hierarchical file system structure where files and directories are organized in a tree-like hierarchy. The root directory is the starting point, and all other directories and files branch from there.
+Hierarchical File System: 
+- Unix systems use a hierarchical file system structure where files and directories are organized in a tree-like hierarchy. The root directory is the starting point, and all other directories and files branch from there.
 
-Text-Based Configuration: Configuration files in Unix systems are often plain text files, making them human-readable and editable with simple text editors. This approach allows for easy customization and scripting.
+Text-Based Configuration: 
+- Configuration files in Unix systems are often plain text files, making them human-readable and editable with simple text editors. This approach allows for easy customization and scripting.
 
-Portability: One of Unix's original goals was portability across different hardware platforms. This has led to the development of various Unix-like operating systems, known as Unix variants or Unix-like operating systems (e.g., Linux, macOS, BSD).
+Portability: 
+- One of Unix's original goals was portability across different hardware platforms. This has led to the development of various Unix-like operating systems, known as Unix variants or Unix-like operating systems (e.g., Linux, macOS, BSD).
 
-Networking: Unix systems have strong networking capabilities, which have contributed to their popularity in server environments. Many Internet protocols and network services were developed on Unix systems.
+Networking: 
+- Unix systems have strong networking capabilities, which have contributed to their popularity in server environments. Many Internet protocols and network services were developed on Unix systems.
 
 Examples of Unix operating systems include:
 
-Linux: A Unix-like operating system kernel originally developed by Linus Torvalds. Linux distributions combine the Linux kernel with various software packages to create complete operating systems (e.g., Ubuntu, CentOS, Fedora).
+Linux: 
+- A Unix-like operating system kernel originally developed by Linus Torvalds. Linux distributions combine the Linux kernel with various software packages to create complete operating systems (e.g., Ubuntu, CentOS, Fedora).
 
-macOS: Apple's Unix-based operating system for its Macintosh computers. macOS is built on the Darwin operating system, which is derived from the BSD Unix family.
+macOS: 
+- Apple's Unix-based operating system for its Macintosh computers. macOS is built on the Darwin operating system, which is derived from the BSD Unix family.
 
-BSD (Berkeley Software Distribution): A family of Unix-like operating systems developed at the University of California, Berkeley. Examples include FreeBSD, OpenBSD, and NetBSD.
-
-Unix and its descendants have had a significant impact on the computing world, influencing the development of many other operating systems and shaping the way software is designed and built.
+BSD (Berkeley Software Distribution): 
+- A family of Unix-like operating systems developed at the University of California, Berkeley. Examples include FreeBSD, OpenBSD, and NetBSD.
 
 
 WHAT ABOUT MS WINDOWS?
 
-Unlike Unix-based operating systems, Windows has its own design principles, architecture, and user interface. 
+- Unlike Unix-based operating systems, Windows has its own design principles, architecture, and user interface. 
 
 Key characteristics of Windows operating systems include:
 
-Graphical User Interface (GUI): Windows is known for its graphical user interface, which provides a visual way for users to interact with the computer. The desktop environment, windows, icons, and menus are all part of the GUI.
+Graphical User Interface (GUI): 
+- Windows is known for its graphical user interface, which provides a visual way for users to interact with the computer. The desktop environment, windows, icons, and menus are all part of the GUI.
 
-Compatibility: Windows has a large base of software applications designed specifically for the platform. Many commercial and consumer software products are developed to run on Windows, making it a popular choice for a wide range of users.
+Compatibility: 
+- Windows has a large base of software applications designed specifically for the platform. Many commercial and consumer software products are developed to run on Windows, making it a popular choice for a wide range of users.
 
-Registry System: Windows uses a central registry to store configuration settings and information about installed software and hardware. This is a departure from Unix's text-based configuration files.
+Registry System: 
+- Windows uses a central registry to store configuration settings and information about installed software and hardware. This is a departure from Unix's text-based configuration files.
 
-Single-User Focus: While modern Windows versions can support multiple user accounts, the historical focus of Windows has been on single-user systems, especially in the consumer market.
+Single-User Focus: 
+- While modern Windows versions can support multiple user accounts, the historical focus of Windows has been on single-user systems, especially in the consumer market.
 
-Proprietary Nature: Windows is a proprietary operating system developed by Microsoft. This means that the source code is not freely available, and Microsoft retains control over the development, distribution, and licensing of the operating system.
+Proprietary Nature: 
+- Windows is a proprietary operating system developed by Microsoft. This means that the source code is not freely available, and Microsoft retains control over the development, distribution, and licensing of the operating system.
 
-DirectX and Gaming: Windows has been a popular platform for gaming due to its DirectX technology, which provides a set of APIs (Application Programming Interfaces) for multimedia and gaming graphics. Many game developers target the Windows platform.
+DirectX and Gaming: 
+- Windows has been a popular platform for gaming due to its DirectX technology, which provides a set of APIs (Application Programming Interfaces) for multimedia and gaming graphics. Many game developers target the Windows platform.
 
-Networking: Windows operating systems have extensive networking capabilities and are commonly used in enterprise environments. Windows Server editions are designed to provide server-based services and network management.
+Networking: 
+- Windows operating systems have extensive networking capabilities and are commonly used in enterprise environments. Windows Server editions are designed to provide server-based services and network management.
 
-Variants and Versions: Windows has evolved over time with various versions, including Windows 3.1, Windows 95, Windows XP, Windows 7, Windows 8, Windows 10, and more. Each version brought improvements, new features, and changes to the user experience.
+Variants and Versions: 
+- Windows has evolved over time with various versions, including Windows 3.1, Windows 95, Windows XP, Windows 7, Windows 8, Windows 10, and more. Each version brought improvements, new features, and changes to the user experience.
 
-Microsoft Ecosystem: Windows is a key component of Microsoft's broader ecosystem, which includes products like Microsoft Office, Azure cloud services, and various development tools.
+Microsoft Ecosystem: 
+- Windows is a key component of Microsoft's broader ecosystem, which includes products like Microsoft Office, Azure cloud services, and various development tools.
 
 While Windows and Unix-like operating systems (such as Linux and macOS) have distinct differences in terms of architecture, design philosophy, and user interface, they share the fundamental goal of providing a platform for users and software applications to run on a computer. Windows is particularly known for its widespread use in desktop computing, gaming, business, and enterprise environments.
 
 
+UNIX SIGNALS:
+
+- In Unix-like operating systems, signals are a form of inter-process communication (IPC) used to notify a process that a particular event has occurred. 
+- Signals can be generated by the operating system or sent by one process to another. 
+- They are used for various purposes, including process management, error handling, and communication between processes. 
+
+Here's a basic overview of how signals work and how you can use them in a client-server program:
+
+Signal Basics:
+- Signals are represented by integer values, such as 
+    - SIGINT (2), 
+    - SIGTERM (15), 
+    - SIGUSR1 (10), and so on.
+- The kill system call is commonly used to send signals to processes. 
+    - The command kill -<signal> <pid> sends a signal to the specified process.
+
+
+Handling Signals:
+- In C, you can set up signal handlers using the signal() function or the more modern sigaction() function.
+- A signal handler is a function that gets called when a specific signal is received. 
+    - It allows your program to react to the signal.
+
+
+Signal Handling in a Client-Server Program:
+- In your client-server program, you can use signals to facilitate communication between the client and server processes. 
+    - For instance, you could define a custom signal to indicate when the client wants to communicate with the server.
+
+
+Here's a simple example of a client-server program using signals in C:
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+
+void server_signal_handler(int signum) {
+    // Handle server-specific signal
+    if (signum == SIGUSR1) {
+        printf("Server received a signal from the client.\n");
+    }
+}
+
+int main() {
+    // Set up server signal handler
+    signal(SIGUSR1, server_signal_handler);
+
+    // Fork a child process for the client
+    pid_t client_pid = fork();
+
+    if (client_pid == 0) {
+        // This is the client process
+        printf("Client process is running.\n");
+        // Send a signal to the server process
+        kill(getppid(), SIGUSR1);
+    } else if (client_pid > 0) {
+        // This is the server process
+        printf("Server process is running.\n");
+        // Wait for the signal from the client
+        pause();
+    } else {
+        perror("fork");
+        exit(1);
+    }
+
+    return 0;
+}
+```
+
+1.1 Only SIGUSR1 and SIGUSR2 signals are permitted for use.
+
+- SIGUSR1 and SIGUSR2 are two user-defined signals in Unix-like operating systems. 
+- These signals are provided for application-specific purposes and are not assigned specific meanings by the operating system itself. Instead, they are available for programmers to use as needed to implement custom behavior or communication between processes. 
+- These signals can be used to trigger custom actions in a program when specific events occur.
+
+Here's a brief overview of SIGUSR1 and SIGUSR2:
+
+SIGUSR1 (User-defined Signal 1):
+
+Signal Number: 
+- 10
+Purpose: 
+- SIGUSR1 is often used by user programs to indicate a specific event or request a particular action. 
+- Since it's user-defined, its interpretation and handling depend on the application.
+Example Use: 
+- Imagine you have a long-running process that performs a certain task. You might use SIGUSR1 to instruct the process to save its current state or perform a specific operation, without the need to terminate the process.
+- Or, a program might use SIGUSR1 to toggle a certain behavior, initiate a data transfer, or prompt a process to perform a certain task.
+
+
+SIGUSR2 (User-defined Signal 2):
+
+Signal Number: 
+- 12
+Purpose: 
+- Similar to SIGUSR1, SIGUSR2 is a user-defined signal that can be used to convey a specific event or action.
+Example Use: 
+- Continuing from the previous example, you could use SIGUSR2 to trigger another type of action in the long-running process, perhaps to generate a report, handle communication, indicate a state change, or update its configuration.
+
+
+- Both SIGUSR1 and SIGUSR2 provide a way for applications to communicate with their processes in a customized manner. 
+- However, it's important to note that the exact behavior and handling of these signals depend on how they are implemented within the program's code.
+
+- When sending or receiving these signals, you can use the kill system call or the kill command in the terminal, passing the appropriate signal number and the process ID (PID) of the target process.
+
+Example usage from the command line:
+```
+bash
+Copy code
+# Send SIGUSR1 signal to process with PID 12345
+kill -SIGUSR1 12345
+
+# Send SIGUSR2 signal to process with PID 67890
+kill -SIGUSR2 67890
+```
+
+- It's worth mentioning that while these signals are available for user-defined purposes, it's important to follow good programming practices and provide clear documentation on how your program uses these signals to avoid confusion and ensure proper handling.
 
 
 2. What are these functions?
 
-  ◦ sigemptyset
-  ◦ sigaddset
-  ◦ sigaction
-  ◦ kill
-  ◦ getpid
-  ◦ pause
-  ◦ sleep
-  ◦ usleep
-  ◦ exit
+- sigemptyset
+- sigaddset
+- sigaction
+- kill
+- getpid
+- pause
+- sleep
+- usleep
+- exit
+
+sigemptyset():
+- is a function in C that is used to initialize an empty signal set. 
+- It is part of the signal handling interface provided by the POSIX standard (Portable Operating System Interface) for Unix-like operating systems. 
+- The purpose of sigemptyset() is to create an empty set of signals, which can then be manipulated using other signal-related functions.
+
+Here's the basic syntax of the sigemptyset() function:
+
+```
+#include <signal.h>
+
+int sigemptyset(sigset_t *set);
+```
+
+Parameters:
+set: 
+- A pointer to a sigset_t data structure that will be initialized as an empty signal set.
+
+Return Value:
+- The function returns 0 on success and -1 on error.
+
+Usage:
+- The primary use of sigemptyset() is to prepare a signal set before adding or removing signals using other functions like sigaddset() and sigdelset(). 
+- Signal sets are used in various signal-related functions, such as when configuring signal masks for blocking or unblocking signals, as well as for checking the presence of signals in a set.
+
+Here's an example of how you might use sigemptyset() along with other signal-related functions to manipulate signal sets:
+
+```
+#include <stdio.h>
+#include <signal.h>
+
+int main() 
+{
+    sigset_t mySignalSet;
+
+    // Initialize an empty signal set
+    if (sigemptyset(&mySignalSet) == -1) 
+    {
+        perror("sigemptyset");
+        return 1;
+    }
+
+    // Add a signal (e.g., SIGINT) to the set
+    if (sigaddset(&mySignalSet, SIGINT) == -1) 
+    {
+        perror("sigaddset");
+        return 1;
+    }
+
+    // Check if a specific signal is in the set
+    if (sigismember(&mySignalSet, SIGINT)) 
+    {
+        printf("SIGINT is in the signal set.\n");
+    } 
+    else 
+    {
+        printf("SIGINT is not in the signal set.\n");
+    }
+    return 0;
+}
+```
+
+- In this example, sigemptyset() is used to initialize an empty signal set named mySignalSet. 
+- Then, the program adds the SIGINT signal to the set using sigaddset(). 
+- Finally, it checks whether SIGINT is a member of the set using sigismember().
+
+
+sigaddset():
+
+
+sigaction
+kill
+getpid
+pause
+sleep
+usleep
+exit
 
 3. What does this mean, “create a communication program in the form of a client and a server”?
 
