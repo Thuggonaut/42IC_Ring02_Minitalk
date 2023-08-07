@@ -58,6 +58,68 @@ Bonus Part:
 
 1.1 Only SIGUSR1 and SIGUSR2 signals are permitted for use.
 
+UNIX OPERATING SYSTEMS:
+
+A Unix operating system refers to a family of multitasking, multiuser computer operating systems that follow the design principles established by the original Unix system.
+
+Key characteristics of Unix operating systems include:
+
+Multiuser: Unix systems are designed to support multiple users simultaneously. Each user has their own account, home directory, and permissions. Users can log in and run processes concurrently, while the operating system ensures isolation between users.
+
+Multitasking: Unix allows multiple processes to run simultaneously, sharing the system's resources like CPU time and memory. The operating system's scheduler determines which process gets executed and when.
+
+Shell: Unix systems use a command-line interface known as a shell. A shell is a program that allows users to interact with the operating system by typing commands. Various shells exist, such as Bash, sh, csh, and more.
+
+Modular Design: Unix is built on a modular design, with each component (utilities, libraries, etc.) designed to perform a specific task. This modular nature makes it easier to develop and maintain software.
+
+Hierarchical File System: Unix systems use a hierarchical file system structure where files and directories are organized in a tree-like hierarchy. The root directory is the starting point, and all other directories and files branch from there.
+
+Text-Based Configuration: Configuration files in Unix systems are often plain text files, making them human-readable and editable with simple text editors. This approach allows for easy customization and scripting.
+
+Portability: One of Unix's original goals was portability across different hardware platforms. This has led to the development of various Unix-like operating systems, known as Unix variants or Unix-like operating systems (e.g., Linux, macOS, BSD).
+
+Networking: Unix systems have strong networking capabilities, which have contributed to their popularity in server environments. Many Internet protocols and network services were developed on Unix systems.
+
+Examples of Unix operating systems include:
+
+Linux: A Unix-like operating system kernel originally developed by Linus Torvalds. Linux distributions combine the Linux kernel with various software packages to create complete operating systems (e.g., Ubuntu, CentOS, Fedora).
+
+macOS: Apple's Unix-based operating system for its Macintosh computers. macOS is built on the Darwin operating system, which is derived from the BSD Unix family.
+
+BSD (Berkeley Software Distribution): A family of Unix-like operating systems developed at the University of California, Berkeley. Examples include FreeBSD, OpenBSD, and NetBSD.
+
+Unix and its descendants have had a significant impact on the computing world, influencing the development of many other operating systems and shaping the way software is designed and built.
+
+
+WHAT ABOUT MS WINDOWS?
+
+Unlike Unix-based operating systems, Windows has its own design principles, architecture, and user interface. 
+
+Key characteristics of Windows operating systems include:
+
+Graphical User Interface (GUI): Windows is known for its graphical user interface, which provides a visual way for users to interact with the computer. The desktop environment, windows, icons, and menus are all part of the GUI.
+
+Compatibility: Windows has a large base of software applications designed specifically for the platform. Many commercial and consumer software products are developed to run on Windows, making it a popular choice for a wide range of users.
+
+Registry System: Windows uses a central registry to store configuration settings and information about installed software and hardware. This is a departure from Unix's text-based configuration files.
+
+Single-User Focus: While modern Windows versions can support multiple user accounts, the historical focus of Windows has been on single-user systems, especially in the consumer market.
+
+Proprietary Nature: Windows is a proprietary operating system developed by Microsoft. This means that the source code is not freely available, and Microsoft retains control over the development, distribution, and licensing of the operating system.
+
+DirectX and Gaming: Windows has been a popular platform for gaming due to its DirectX technology, which provides a set of APIs (Application Programming Interfaces) for multimedia and gaming graphics. Many game developers target the Windows platform.
+
+Networking: Windows operating systems have extensive networking capabilities and are commonly used in enterprise environments. Windows Server editions are designed to provide server-based services and network management.
+
+Variants and Versions: Windows has evolved over time with various versions, including Windows 3.1, Windows 95, Windows XP, Windows 7, Windows 8, Windows 10, and more. Each version brought improvements, new features, and changes to the user experience.
+
+Microsoft Ecosystem: Windows is a key component of Microsoft's broader ecosystem, which includes products like Microsoft Office, Azure cloud services, and various development tools.
+
+While Windows and Unix-like operating systems (such as Linux and macOS) have distinct differences in terms of architecture, design philosophy, and user interface, they share the fundamental goal of providing a platform for users and software applications to run on a computer. Windows is particularly known for its widespread use in desktop computing, gaming, business, and enterprise environments.
+
+
+
+
 2. What are these functions?
 
   ◦ sigemptyset
