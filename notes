@@ -1,4 +1,4 @@
-Minitalk:
+# Minitalk:
 
 The purpose of this project is to code a small data change program using UNIX signals.
 
@@ -26,7 +26,7 @@ the server), but you will have to justify their use.
   ◦ exit
 
 
-Mandatory Part:
+## Mandatory Part:
 
 1. You must create a communication program in the form of a client and a server.
     • The server must be started first. After its launch, it has to print its PID.
@@ -47,92 +47,14 @@ Note:
 Linux system does NOT queue signals when you already have pending signals of this type!  Bonus time?
 
 
-Bonus Part:
+## Bonus Part:
 
 • The server acknowledges every message received by sending back a signal to the client.
 • Unicode characters support!
 
 
 
-1. What are UNIX signals?
-
-UNIX OPERATING SYSTEMS:
-
-- A Unix operating system refers to a family of multitasking, multiuser computer operating systems that follow the design principles established by the original Unix system.
-
-Key characteristics of Unix operating systems include:
-
-Multiuser: 
-- Unix systems are designed to support multiple users simultaneously. Each user has their own account, home directory, and permissions. Users can log in and run processes concurrently, while the operating system ensures isolation between users.
-
-Multitasking: 
-- Unix allows multiple processes to run simultaneously, sharing the system's resources like CPU time and memory. The operating system's scheduler determines which process gets executed and when.
-
-Shell: 
-- Unix systems use a command-line interface known as a shell. A shell is a program that allows users to interact with the operating system by typing commands. Various shells exist, such as Bash, sh, csh, and more.
-
-Modular Design: 
-- Unix is built on a modular design, with each component (utilities, libraries, etc.) designed to perform a specific task. This modular nature makes it easier to develop and maintain software.
-
-Hierarchical File System: 
-- Unix systems use a hierarchical file system structure where files and directories are organized in a tree-like hierarchy. The root directory is the starting point, and all other directories and files branch from there.
-
-Text-Based Configuration: 
-- Configuration files in Unix systems are often plain text files, making them human-readable and editable with simple text editors. This approach allows for easy customization and scripting.
-
-Portability: 
-- One of Unix's original goals was portability across different hardware platforms. This has led to the development of various Unix-like operating systems, known as Unix variants or Unix-like operating systems (e.g., Linux, macOS, BSD).
-
-Networking: 
-- Unix systems have strong networking capabilities, which have contributed to their popularity in server environments. Many Internet protocols and network services were developed on Unix systems.
-
-Examples of Unix operating systems include:
-
-Linux: 
-- A Unix-like operating system kernel originally developed by Linus Torvalds. Linux distributions combine the Linux kernel with various software packages to create complete operating systems (e.g., Ubuntu, CentOS, Fedora).
-
-macOS: 
-- Apple's Unix-based operating system for its Macintosh computers. macOS is built on the Darwin operating system, which is derived from the BSD Unix family.
-
-BSD (Berkeley Software Distribution): 
-- A family of Unix-like operating systems developed at the University of California, Berkeley. Examples include FreeBSD, OpenBSD, and NetBSD.
-
-
-WHAT ABOUT MS WINDOWS?
-
-- Unlike Unix-based operating systems, Windows has its own design principles, architecture, and user interface. 
-
-Key characteristics of Windows operating systems include:
-
-Graphical User Interface (GUI): 
-- Windows is known for its graphical user interface, which provides a visual way for users to interact with the computer. The desktop environment, windows, icons, and menus are all part of the GUI.
-
-Compatibility: 
-- Windows has a large base of software applications designed specifically for the platform. Many commercial and consumer software products are developed to run on Windows, making it a popular choice for a wide range of users.
-
-Registry System: 
-- Windows uses a central registry to store configuration settings and information about installed software and hardware. This is a departure from Unix's text-based configuration files.
-
-Single-User Focus: 
-- While modern Windows versions can support multiple user accounts, the historical focus of Windows has been on single-user systems, especially in the consumer market.
-
-Proprietary Nature: 
-- Windows is a proprietary operating system developed by Microsoft. This means that the source code is not freely available, and Microsoft retains control over the development, distribution, and licensing of the operating system.
-
-DirectX and Gaming: 
-- Windows has been a popular platform for gaming due to its DirectX technology, which provides a set of APIs (Application Programming Interfaces) for multimedia and gaming graphics. Many game developers target the Windows platform.
-
-Networking: 
-- Windows operating systems have extensive networking capabilities and are commonly used in enterprise environments. Windows Server editions are designed to provide server-based services and network management.
-
-Variants and Versions: 
-- Windows has evolved over time with various versions, including Windows 3.1, Windows 95, Windows XP, Windows 7, Windows 8, Windows 10, and more. Each version brought improvements, new features, and changes to the user experience.
-
-Microsoft Ecosystem: 
-- Windows is a key component of Microsoft's broader ecosystem, which includes products like Microsoft Office, Azure cloud services, and various development tools.
-
-While Windows and Unix-like operating systems (such as Linux and macOS) have distinct differences in terms of architecture, design philosophy, and user interface, they share the fundamental goal of providing a platform for users and software applications to run on a computer. Windows is particularly known for its widespread use in desktop computing, gaming, business, and enterprise environments.
-
+## 1. What are UNIX signals?
 
 UNIX SIGNALS:
 
@@ -202,7 +124,7 @@ int main() {
 }
 ```
 
-1.1 Only SIGUSR1 and SIGUSR2 signals are permitted for use.
+### 1.1 Only SIGUSR1 and SIGUSR2 signals are permitted for use.
 
 - SIGUSR1 and SIGUSR2 are two user-defined signals in Unix-like operating systems. 
 - These signals are provided for application-specific purposes and are not assigned specific meanings by the operating system itself. Instead, they are available for programmers to use as needed to implement custom behavior or communication between processes. 
@@ -239,8 +161,6 @@ Example Use:
 
 Example usage from the command line:
 ```
-bash
-Copy code
 # Send SIGUSR1 signal to process with PID 12345
 kill -SIGUSR1 12345
 
@@ -248,28 +168,24 @@ kill -SIGUSR1 12345
 kill -SIGUSR2 67890
 ```
 
-- It's worth mentioning that while these signals are available for user-defined purposes, it's important to follow good programming practices and provide clear documentation on how your program uses these signals to avoid confusion and ensure proper handling.
 
+## 2. What are these functions?
 
-2. What are these functions?
+1. sigemptyset
+2. sigaddset
+3. sigaction
+4. kill
+5. getpid
+6. pause
+7. sleep
+8. usleep
+9. exit
 
-- sigemptyset
-- sigaddset
-- sigaction
-- kill
-- getpid
-- pause
-- sleep
-- usleep
-- exit
-
-sigemptyset():
+### 1. sigemptyset():
 - is a function in C that is used to initialize an empty signal set. 
-- It is part of the signal handling interface provided by the POSIX standard (Portable Operating System Interface) for Unix-like operating systems. 
 - The purpose of sigemptyset() is to create an empty set of signals, which can then be manipulated using other signal-related functions.
 
-Here's the basic syntax of the sigemptyset() function:
-
+Syntax:
 ```
 #include <signal.h>
 
@@ -281,14 +197,16 @@ set:
 - A pointer to a sigset_t data structure that will be initialized as an empty signal set.
 
 Return Value:
-- The function returns 0 on success and -1 on error.
+- The function returns 0 on success and -1 on error and sets errno to show that an error has occurred.
 
 Usage:
-- The primary use of sigemptyset() is to prepare a signal set before adding or removing signals using other functions like sigaddset() and sigdelset(). 
+- The primary use of sigemptyset() is to initialize a signal set (represented by the sigset_t data structure) to an empty state. 
+    - This means that after calling this function, the signal set will not contain any signals.
+- It prepares a signal set before adding or removing signals using other functions like sigaddset() and sigdelset(). 
 - Signal sets are used in various signal-related functions, such as when configuring signal masks for blocking or unblocking signals, as well as for checking the presence of signals in a set.
+- This function is typically used as the first step to build custom signal sets for further manipulation.
 
-Here's an example of how you might use sigemptyset() along with other signal-related functions to manipulate signal sets:
-
+Example:
 ```
 #include <stdio.h>
 #include <signal.h>
@@ -301,14 +219,14 @@ int main()
     if (sigemptyset(&mySignalSet) == -1) 
     {
         perror("sigemptyset");
-        return 1;
+        return (1);
     }
 
     // Add a signal (e.g., SIGINT) to the set
     if (sigaddset(&mySignalSet, SIGINT) == -1) 
     {
         perror("sigaddset");
-        return 1;
+        return (1);
     }
 
     // Check if a specific signal is in the set
@@ -320,7 +238,7 @@ int main()
     {
         printf("SIGINT is not in the signal set.\n");
     }
-    return 0;
+    return (0);
 }
 ```
 
@@ -329,28 +247,601 @@ int main()
 - Finally, it checks whether SIGINT is a member of the set using sigismember().
 
 
-sigaddset():
+### 2. sigaddset():
+-  is a function in C used to manipulate signal sets.
+-  Signal sets are data objects that let a thread keep track of groups of signals. For example, a thread might create a signal set to record which signals it is blocking, and another signal set to record which signals are pending.
+- In other words, signal sets are collections of signals that are grouped together. 
+
+Syntax:
+```
+#include <signal.h>
+
+int sigaddset(sigset_t *set, int signum);
+```
+
+Parameters:
+sigset_t *set: 
+- This is a pointer to the signal set wherein you want to add a new signal.
+
+int signum: 
+- This is the signal number that you want to add to the signal set. 
+- The signals are defined in the signal.h header file as macros, they include SIGINT, SIGSTOP, SIGUSR1, etc.
+- Each signal has a specific number associated with it.
+
+Return Value:
+- The function returns 0 on success and -1 on error and sets errno to show that an error has occurred.
+
+Usage:
+- The primary use of sigaddset() is used to add a specified signal to a specified signal set. 
+- This can be useful when you want to customize how your program responds to different signals.
+
+Example:
+```
+#include <stdio.h>
+#include <signal.h>
+
+int main() 
+{
+    sigset_t signalSet;
+    
+    // Initialize an empty signal set
+    if (sigemptyset(&signalSet) == -1) 
+    {
+        perror("sigemptyset");
+        return (1);
+    }
+    
+    // Add SIGUSR1 signal to the signal set
+    if (sigaddset(&signalSet, SIGUSR1) == -1) 
+    {
+        perror("sigaddset");
+        return (1);
+    }
+    
+    // Add SIGUSR2 signal to the signal set
+    if (sigaddset(&signalSet, SIGUSR2) == -1) 
+    {
+        perror("sigaddset");
+        return (1);
+    }
+    
+    // Check if SIGUSR1 is in the signal set
+    if (sigismember(&signalSet, SIGUSR1)) 
+    {
+        printf("SIGUSR1 is in the signal set.\n");
+    }
+    
+    // Check if SIGUSR2 is in the signal set
+    if (sigismember(&signalSet, SIGUSR2)) 
+    {
+        printf("SIGUSR2 is in the signal set.\n");
+    }
+    return (0);
+}
+```
+
+In this example:
+- we first initialize an empty signal set using sigemptyset(). 
+- Then, we use sigaddset() to add the SIGUSR1 and SIGUSR2 signals to the set. 
+- Finally, we use sigismember() to check if each signal is present in the set and print a message accordingly.
 
 
-sigaction
-kill
-getpid
-pause
-sleep
-usleep
-exit
+### 3. sigaction():
+- is a function in C used to examine and set the action that should be taken when a specific signal occurs.
 
-3. What does this mean, “create a communication program in the form of a client and a server”?
+Syntax:
+```
+#include <signal.h>
 
-3.1 The server, after it’s launch, has to print its PID. What is PID?
+int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact);
+```
+
+Parameters:
+signum: 
+- This is the signal number. 
+- Each signal has a specific number associated with it, such as SIGINT for the interrupt signal.
+
+act: 
+- This is a pointer to a struct sigaction which specifies the new action to take for the signum signal. 
+- If this parameter is NULL, then the signal's disposition is not changed, but the current disposition can still be retrieved via the oldact parameter.
+
+oldact: 
+- This is a pointer to a struct sigaction where sigaction() saves the current action for the signum signal. 
+- If this parameter is NULL, then the current disposition is not saved.
+
+Return Value:
+- The function returns 0 on success and -1 on error and sets errno to show that an error has occurred.
+
+Usage:
+- The sigaction() function allows the calling process to change its action for the signal `signum` to the action described by `act`. - `signum` specifies the signal and `act` specifies the new action to take. 
+- A NULL act argument can be used to query the current action without changing it.
+
+Example:
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <signal.h>
+
+void signal_handler(int signum) 
+{
+    if (signum == SIGUSR1) 
+    {
+        printf("Received SIGUSR1 signal.\n");
+    } 
+    else if (signum == SIGUSR2) 
+    {
+        printf("Received SIGUSR2 signal.\n");
+    }
+}
+
+int main() 
+{
+    struct sigaction sa;
+    sa.sa_handler = signal_handler;
+    sa.sa_flags = 0;
+
+    if (sigaction(SIGUSR1, &sa, NULL) == -1) 
+    {
+        perror("Error setting up SIGUSR1 handler");
+        return 1;
+    }
+
+    if (sigaction(SIGUSR2, &sa, NULL) == -1) 
+    {
+        perror("Error setting up SIGUSR2 handler");
+        return 1;
+    }
+
+    printf("Waiting for signals...\n");
+    while (1) 
+    {
+        // Do other tasks or simply wait here
+    }
+    return (0);
+}
+```
+
+In this example:
+- The sigaction() function is used to associate the customHandler() function with both SIGUSR1 and SIGUSR2 signals. 
+- When these signals are received, the custom handler function is executed, providing a way to perform specific actions in response to these signals. 
+- The program then enters an infinite loop, waiting for signals while continuing its normal execution.
+
+
+### 3. kill():
+- function in C is used to send a signal to a process or a group of processes specified by the process ID.
+
+Syntax:
+```
+#include <signal.h>
+
+int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact);
+```
+
+Parameters:
+pid: 
+- The process ID of the target process. It can take the following values:
+    - `> 0`: 
+      The signal is sent to the process with the specified ID.
+    - `0`: 
+      The signal is sent to all processes in the process group of the calling process.
+    - `-1`: 
+      The signal is sent to all processes except for process 1 (init).
+    - `< -1`: 
+      The signal is sent to all processes in the process group -pid.
+
+sig: 
+- The signal number or the signal constant to be sent. 
+- It can be one of the predefined signal numbers or signal constants defined in `<signal.h>`.
+
+Return Value:
+- The function returns 0 on success and -1 on error and sets errno to show that an error has occurred.
+
+Usage:
+- The kill() function is used to send a signal to a process or a group of processes specified by the pid. 
+- The sig parameter specifies the signal to be sent, which can be either a signal number or a signal constant.
+- By convention, a 0 signal is often used to check the validity of the pid without actually sending a signal.
+
+Example:
+```
+#include <stdio.h>
+#include <signal.h>
+#include <unistd.h>
+
+void signal_handler(int signum) 
+{
+    if (signum == SIGUSR1) 
+    {
+        printf("Received SIGUSR1 signal.\n");
+        // Handle SIGUSR1 signal
+    } 
+    else if (signum == SIGUSR2) 
+    {
+        printf("Received SIGUSR2 signal.\n");
+        // Handle SIGUSR2 signal
+    }
+}
+
+int main() 
+{
+    // Register signal handlers
+    signal(SIGUSR1, signal_handler);
+    signal(SIGUSR2, signal_handler);
+
+    printf("My process ID: %d\n", getpid());
+
+    // Pause the program, waiting for signals
+    while (1) 
+    {
+        pause();
+    }
+    return (0);
+}
+```
+
+In this example:
+- The signal_handler() function is defined to handle the SIGUSR1 and SIGUSR2 signals. 
+    - It checks which signal was received and performs corresponding actions.
+- In the main() function, we register signal handlers for SIGUSR1 and SIGUSR2 using the signal() function.
+- We then print the process ID using getpid().
+- The program enters an infinite loop using while(1) and waits for signals using the pause() function. 
+    - The program will pause execution until a signal is received. 
+    - When a signal is received, the corresponding signal_handler() function is called to handle the signal.
+
+- To send SIGUSR1 or SIGUSR2 signals to this program, you can use the kill command from another terminal or by another program"
+```
+// Terminal 1
+$ gcc example.c -o example
+$ ./example
+My process ID: 1234
+
+// Terminal 2
+$ kill -SIGUSR1 1234  // Replace 1234 with the actual process ID
+```
+
+- You should see the corresponding messages in Terminal 1 indicating the received signals.
+
+
+### 3. getpid():
+- function in C is used to retrieve the process ID (PID) of the calling process, which is a unique identifier assigned to each running process on the system.
+
+Syntax:
+```
+#include <unistd.h>
+
+pid_t getpid(void);
+```
+
+Parameters:
+- does not take any parameters.
+
+Return Value:
+- The getpid() function returns the process ID (PID) of the calling process. 
+- The PID is of type pid_t, which is usually an integer.
+
+Usage:
+- The getpid() function is commonly used to identify a specific process or to perform process-specific operations. 
+- It allows programs to distinguish between different processes and perform actions based on their process ID.
+
+Example:
+```
+#include <stdio.h>
+#include <unistd.h>
+
+int main(void) 
+{
+    pid_t pid = getpid();
+    printf("My process ID is %d.\n", pid);
+    return (0);
+}
+```
+
+- In this example, the getpid() function is called to retrieve the process ID of the current process. 
+- The process ID is then printed using printf().
+
+Output:
+```
+My process ID is 12345.
+```
+
+- Please note that the process ID is unique for each running process on the system, and it can change every time the program is executed.
+
+
+### 3. pause():
+- function in C is used to suspend the execution of a program until a signal is received.
+
+Syntax:
+```
+#include <unistd.h>
+
+int pause(void);
+```
+
+Parameters:
+- does not take any parameters.
+
+Return Value:
+- The pause() function returns -1 and sets errno to EINTR if it is interrupted by a signal. 
+- Otherwise, it does not return.
+
+Usage:
+- The pause() function is typically used in signal handling to wait for a specific signal before proceeding with further execution. 
+- It allows a program to pause its execution until a signal handler changes the program flow.
+
+Example:
+```
+#include <stdio.h>
+#include <signal.h>
+#include <unistd.h>
+
+void signal_handler(int signum) 
+{
+    if (signum == SIGUSR1) 
+    {
+        printf("Received SIGUSR1 signal.\n");
+        // Handle SIGUSR1 signal
+    } 
+    else if (signum == SIGUSR2) 
+    {
+        printf("Received SIGUSR2 signal.\n");
+        // Handle SIGUSR2 signal
+    }
+}
+
+int main() 
+{
+    // Register signal handlers
+    signal(SIGUSR1, signal_handler);
+    signal(SIGUSR2, signal_handler);
+
+    printf("My process ID: %d\n", getpid());
+
+    // Pause the program, waiting for signals
+    pause();
+    return (0);
+}
+```
+
+In this example:
+- The signal_handler() function is defined to handle the SIGUSR1 and SIGUSR2 signals. 
+    - It checks which signal was received and performs corresponding actions.
+- In the main() function, we register signal handlers for SIGUSR1 and SIGUSR2 using the signal() function.
+- We then print the process ID using getpid().
+- The program enters the pause() function, which will block until a signal is received. 
+    - Once a signal is received, the corresponding signal_handler() function is called to handle the signal.
+
+
+### 3. sleep():
+- function in C is used to pause the execution of a program for a specified number of seconds.
+
+Syntax:
+```
+#include <unistd.h>
+
+unsigned int sleep(unsigned int seconds);
+```
+
+Parameters:
+seconds: 
+- specifies the number of seconds the program should sleep.
+
+Return Value:
+- The sleep() function returns the number of seconds remaining if it is interrupted by a signal, or 0 if the specified time has elapsed.
+
+Usage:
+- The sleep() function is commonly used to introduce delays in program execution or to wait for a specific duration before proceeding with further execution.
+- It allows programs to pause for a specified amount of time, which can be useful for synchronization between processes or implementing timed behavior.
+
+Example:
+```
+#include <stdio.h>
+#include <unistd.h>
+#include <signal.h>
+
+void signalHandler(int signal) 
+{
+    printf("Signal %d received.\n", signal);
+}
+
+int main(void) 
+{
+    signal(SIGUSR1, signalHandler);
+    signal(SIGUSR2, signalHandler);
+    printf("Waiting for signals...\n");
+
+    // Sleep for 3 seconds
+    sleep(3);
+
+    printf("Resuming execution.\n");
+    return (0);
+}
+```
+
+In this example:
+- The program sets up signal handlers for the SIGUSR1 and SIGUSR2 signals.
+- It then waits for signals by using the sleep() function for 3 seconds.
+- After the sleep period, if any of the signals are received, the corresponding signal handler is invoked.
+- The program resumes execution and prints the "Resuming execution" message.
+
+Output:
+```
+Waiting for signals...
+^CSignal 2 received.
+Resuming execution.
+```
+
+- During the 3 seconds of sleep, if either SIGUSR1 or SIGUSR2 signals are received, the signal handler will be called and the program will resume execution after the sleep period.
+
+
+### 3. usleep():
+- function in C is used to suspend the execution of a program for a specified number of microseconds.
+
+Syntax:
+```
+#include <unistd.h>
+
+int usleep(useconds_t useconds);
+```
+
+Parameters:
+useconds:
+- specifies the number of microseconds the program should sleep.
+
+Return Value:
+- The usleep() function returns 0 if the execution was successful (execution successfully suspended) or -1 if there was an error.
+
+Usage:
+- The usleep() function is commonly used to introduce delays in program execution or to pause the program for a specific duration in microseconds.
+- It provides a higher precision delay compared to the sleep() function, which operates in seconds.
+- The usleep() function is available in POSIX-compliant systems but is considered obsolete in favor of the nanosleep() function.
+
+Example:
+```
+#include <stdio.h>
+#include <unistd.h>
+#include <signal.h>
+
+void signalHandler(int signal) 
+{
+    printf("Signal %d received.\n", signal);
+}
+
+int main(void) 
+{
+    signal(SIGUSR1, signalHandler);
+    signal(SIGUSR2, signalHandler);
+    printf("Waiting for signals...\n");
+
+    // Sleep for 1 second (1000000 microseconds)
+    usleep(1000000);
+    
+    printf("Resuming execution.\n");
+    return (0);
+}
+```
+
+In this example:
+- The program sets up signal handlers for the SIGUSR1 and SIGUSR2 signals.
+- It then waits for signals by using the usleep() function to pause the program for 1 second (equivalent to 1000000 microseconds).
+- After the sleep period, if any of the signals are received, the corresponding signal handler is invoked.
+- The program resumes execution and prints the "Resuming execution" message.
+
+Output:
+```
+Waiting for signals...
+^CSignal 2 received.
+Resuming execution.
+```
+
+- During the 1-second sleep, if either SIGUSR1 or SIGUSR2 signals are received, the signal handler will be called, and the program will resume execution after the sleep period.
+
+
+### 3. exit():
+- function in C is used to terminate the calling process and return control to the operating system.
+
+Syntax:
+```
+#include <stdlib.h>
+
+void exit(int status);
+```
+
+Parameters:
+status:
+- represents the exit status of the program.
+
+Return Value:
+- does not return a value.
+
+Usage:
+- The exit() function is commonly used to terminate a program and return control to the operating system.
+- It allows you to specify an exit status to indicate the status of the program execution to the caller or the operating system.
+- The exit status is typically used to communicate success or failure of the program execution.
+
+Example:
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <signal.h>
+
+void signalHandler(int signal) 
+{
+    printf("Signal %d received.\n", signal);
+    exit(0); // Terminate the program normally
+}
+
+int main(void) 
+{
+    signal(SIGUSR1, signalHandler);
+    signal(SIGUSR2, signalHandler);
+    printf("Waiting for signals...\n");
+    while (1) 
+    {
+        // Do some work
+    }
+    return (0);
+}
+```
+
+In this example:
+- The program sets up signal handlers for the SIGUSR1 and SIGUSR2 signals.
+- When either of these signals is received, the corresponding signal handler is invoked, which prints a message and then calls exit(0) to terminate the program normally.
+- The while(1) loop represents some ongoing work that the program is doing, and it will be interrupted when a signal is received.
+
+Output:
+```
+Waiting for signals...
+^CSignal 2 received.
+```
+
+- During the program execution, if either SIGUSR1 or SIGUSR2 signals are received, the signal handler will be invoked, and the program will terminate normally using exit(0).
+
+
+
+## Breaking down the assignment and its concepts
+
+### 1. What does “create a communication program in the form of a client and a server” mean?
+- To develop an application that allows communication between two separate entities: a client and a server.
+- The client and server will interact with each other using SIGUSR1 and SIGUSR2 UNIX signals.
+
+### 1.1 What is a client?
+- A client initiates communication and sends requests.
+- In the context of our assignment, the client is responsible for sending a message to the server, requesting it to process the provided string. 
+- The client takes two parameters: 
+    - the server's PID (Process ID) and 
+    - the string to send. 
+- After sending the request, the client waits for an acknowledgment from the server.
+
+### 1.2 What is a server?
+- A server receives and processes client requests before sending back responses.
+- In the context of our assignment, the server would be responsible for receiving messages from clients and processing the provided strings. 
+- After processing, the server acknowledges the receipt by sending a signal back to the client. 
+- The server should be started first and print its Process ID (PID) after launch.
+
+### 1.3 What is a PID?
+- A Process Identifier (PID) is a unique number used to uniquely identify an active process.
+- This number may be used as a parameter in various function calls, allowing processes to be manipulated, such as adjusting the process's priority or killing it altogether.
+- The current process ID is provided by a getpid() system call. 
+    - The process ID of a parent process is obtainable by a getppid() system call. 
+- In the context of our assignment, the server will print its PID after it launches. 
+    - The client program needs to know the server's PID to send signals to it. 
+    - This is why the server's PID is one of the parameters that the client takes. We will input the server's PID when we run the client program.
+    - This PID will then be used by the client to communicate with/send signals to the server.
+        - This is usually done using the kill() function, which sends a signal to a process. 
+        - In the context of our assignment, the signals will be SIGUSR1 and SIGUSR2.
+    - The server, upon receiving the signals, will handle them accordingly. 
+        - This is usually done by setting up signal handlers using the signal() or sigaction() function.
+
+
+
 
 4. How do we get the client to send the string input to the server?
 
-5. The server, print the string received from the client, how?
+5. The server, prints the string received from the client, how?
 
 5.1 We need it to print the string quickly.
 
 5.2 The server needs to receive strings from several clients in a row without restarting.
+//This means your server should have a loop where it waits for and processes incoming signals. The processing in this case would be printing the received string.
 
 6. What does this mean, “Linux system does NOT queue signals when you already have pending signals of this type”?
 
