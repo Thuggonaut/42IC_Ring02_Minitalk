@@ -103,6 +103,7 @@ int	main(int argc, char **argv)
 	(0x01 << 7) results in 10000000.
 	Since the bit at position 7 in the binary representation of 'A' is 0, the condition (signal == SIGUSR1) is false.
 	The value of i remains unchanged at 01000001.
-	After going through the process, the value of i becomes 01000001, which is the correct binary representation of the character 'A'. The condition (signal == SIGUSR1) selectively accumulates bits based on whether the received signal is SIGUSR1.
+	After going through the process, the value of i becomes 01000001, which is the correct binary representation of the character 'A'. The condition 
+	(signal == SIGUSR1) selectively accumulates bits based on whether the received signal is SIGUSR1.
 
 */
