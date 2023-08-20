@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <signal.h>
 
-void	ft_handler(int signal, siginfo_t *info, void *s) //This function is a signal handler that is called when the server receives a SIGUSR1 or SIGUSR2 signal. It is defined with the sigaction function, which allows for more advanced signal handling
+void	sig_handler(int signal, siginfo_t *info, void *s) //This function is a signal handler that is called when the server receives a SIGUSR1 or SIGUSR2 signal. It is defined with the sigaction function, which allows for more advanced signal handling
 {
 	static int	bit;
 	static int	i;
@@ -30,14 +30,13 @@ int	main(int argc, char **argv)
 	(void)argv;
 	if (argc != 1)
 	{
-		ft_printf("\033[91mError: wrong format.\033[0m\n");
-		ft_printf("\033[33mTry: ./server\033[0m\n");
-		return (0);
+		ft_printf("Error: wrong format\n");
+		ft_printf("Try: ./server\n");
 	}
 	pid = getpid();
-	ft_printf("\033[94mPID\033[0m \033[96m->\033[0m %d\n", pid); //Gets the PID of the server
-	ft_printf("\033[90mWaiting for a message...\033[0m\n"); //Prints the PID of the server
-	sig.sa_sigaction = ft_handler; //Sets up the sigaction struct to handle signals. It sets ft_handler as the signal handler
+	ft_printf("PID: %d\n", pid); //Gets the PID of the server
+	ft_printf("Waiting for a message...\n"); //Prints the PID of the server
+	sig.sa_sigaction = sig_handler; //Sets up the sigaction struct to handle signals. It sets sig_handler as the signal handler
 	sigemptyset(&sig.sa_mask); //empties the signal mask, and sets the flags to 0
 	sig.sa_flags = 0;
 	while (argc == 1) //Enters an infinite loop where it waits for signals

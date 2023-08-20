@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <signal.h>
 
-static void	ft_confirm(int signal) //This function is a signal handler that is called when the client receives a SIGUSR1 or SIGUSR2 signal. It prints a confirmation message depending on the signal received
+static void	sig_confirm(int signal) //This function is a signal handler that is called when the client receives a SIGUSR1 or SIGUSR2 signal. It prints a confirmation message depending on the signal received
 {
 	if (signal == SIGUSR1)
 		ft_printf("\033[0;32mQSL!\033[0;32m\n", 1);
@@ -11,14 +11,14 @@ static void	ft_confirm(int signal) //This function is a signal handler that is c
 		ft_printf("\033[0;32mQSL!\033[0;32m\n", 1);
 }
 
-void	ft_send_bits(pid_t pid, char i) //sends the bits of a character to the server
+void	send_bits(pid_t pid, char c) //sends the bits of a character to the server
 {
 	int	bit; //used as a counter
 
 	bit = 0;
 	while (bit < 8)
 	{
-		if ((i & (0x01 << bit)) != 0) //checks if the current bit of the character is 1. It does this by shifting 1 to the left by bit places and then performing a bitwise AND operation with the character. If the result is not 0, it means the bit is 1
+		if ((c & (0x01 << bit)) != 0) //checks if the current bit of the character is 1. It does this by shifting 1 to the left by bit places and then performing a bitwise AND operation with the character. If the result is not 0, it means the bit is 1
 			kill(pid, SIGUSR1); //If the bit is 1, it sends the SIGUSR1 signal to the server
 		else
 			kill(pid, SIGUSR2); //If the bit is 0, it sends the SIGUSR2 signal to the server
@@ -30,26 +30,26 @@ void	ft_send_bits(pid_t pid, char i) //sends the bits of a character to the serv
 int	main(int argc, char **argv)
 {
 	pid_t	pid;
-	int	i;
+	char	*msg;
 
-	i = 0;
 	if (argc == 3)
 	{
 		pid = ft_atoi(argv[1]); //Converts the first argument to an integer to get the PID of the server
-		while (argv[2][i] != '\0') //Iterates over each character of the second argument (the message)
+		msg = argv[2];
+		while (*msg != '\0') //Iterates over each character of the second argument (the message)
 		{
-			signal(SIGUSR1, ft_confirm); //sets the signal handler for SIGUSR1 and SIGUSR2 signals
-			signal(SIGUSR2, ft_confirm);
-			ft_send_bits(pid, argv[2][i]); //Sends each character of the message to the server
-			i++;
+			signal(SIGUSR1, sig_confirm); //sets the signal handler for SIGUSR1 and SIGUSR2 signals
+			signal(SIGUSR2, sig_confirm);
+			send_bits(pid, *msg); //Sends each character of the message to the server
+			msg++;
 		}
-		ft_send_bits(pid, '\n'); //Sends a newline character to signify the end of the message
+		send_bits(pid, '\n'); //Sends a newline character to signify the end of the message
 	}
 	else
 	{
-		ft_printf("\033[91mError: wrong format.\033[0m\n"); //If the wrong number of arguments are provided, it prints an error message and returns 1
-		ft_printf("\033[33mTry: ./client_bonus [PID] [MESSAGE]\033[0m\n");
-		return (1);
+		ft_printf("Error: wrong format \n"); //If the wrong number of arguments are provided, print an error message
+		ft_printf("Try: ./client <PID> <MESSAGE> \n");
+		return (1); //Indicate error
 	}
-	return (0);
+	return (0); //Indicate success
 }
