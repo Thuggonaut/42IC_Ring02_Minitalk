@@ -12,7 +12,8 @@ relink.
 the server), but you will have to justify their use.
 • In order to complete the mandatory part, you are allowed to use the following functions:
   ◦ write
-  ◦ ft_printf and any equivalent YOU coded ◦ signal
+  ◦ ft_printf and any equivalent YOU coded 
+  ◦ signal
   ◦ sigemptyset
   ◦ sigaddset
   ◦ sigaction

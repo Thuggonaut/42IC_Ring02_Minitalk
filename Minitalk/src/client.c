@@ -22,7 +22,7 @@ void	send_bits(pid_t pid, char c) //Define a function that transmits the binary 
 
 int	main(int argc, char **argv) //`argv` is a pointer to an array of strings. By using a double pointer `char **argv`, the program can access and retrieve each individual argument as a null-terminated string
 {
-	pid_t	pid; //Declare a process ID data type to store a process ID, which can be used in the program to identify and interact with specific processes
+	pid_t	pid; //Declare a process ID data type to store a process ID, to identify the server and interact with specific processes
 	char	*msg; //Declare a pointer to the string and message
 
 	if (argc == 3) //Perform operations only if argc is `3`, meaning there should be `2` arguments in addition to the program name 
