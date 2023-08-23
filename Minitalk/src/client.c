@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <signal.h>
-#include <sys/types.h>
+#include "minitalk.h"
 
 void	send_bits(pid_t pid, char c) //Define a function that transmits the binary representation of the character's bits, to the server corresponding to the process ID, using signals
 {

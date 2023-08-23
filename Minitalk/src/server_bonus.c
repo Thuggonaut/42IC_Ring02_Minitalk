@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <signal.h>
-#include <sys/types.h>
+#include "minitalk_bonus.h"
 
 void	sig_handler(int sig, siginfo_t *info, void *context) //Define a function as a signal handler that recieves and interprets signals from the server. See #1. This is part of the `struct sigaction`'s prototype. See #3
 {

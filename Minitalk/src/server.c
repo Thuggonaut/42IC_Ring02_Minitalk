@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <signal.h>
-#include <sys/types.h>
+#include "minitalk.h"
 
 void	sig_handler(int sig) //Define a function to handle signals recieved by the server. It will accumulate bits from received signals, effectively converting the signal patterns into characters
 {
