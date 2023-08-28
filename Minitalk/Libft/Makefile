@@ -1,13 +1,13 @@
-NAME		= libft.a
-INCLUDE		= inc/
-SRC_DIR		= src/
-OBJ_DIR		= obj/
+NAME		=	libft.a
+INCLUDE		=	inc/
+SRC_DIR		=	src/
+OBJ_DIR		=	obj/
 
 
-CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror -I
-RM			= rm -f
-AR			= ar rcs
+CC			=	gcc
+CFLAGS		=	-Wall -Wextra -Werror -I
+RM			=	rm -f
+AR			=	ar rcs
 
 
 FTIS_DIR	=	ft_is/
@@ -35,7 +35,7 @@ FTTO_DIR	=	ft_to/
 FTTO		=	ft_atoi \
 				ft_itoa \
 				ft_tolower \
-				ft_toupper
+				ft_toupper \
 
 FTSTR_DIR	=	ft_str/
 FTSTR		=	ft_split \
@@ -52,7 +52,7 @@ FTSTR		=	ft_split \
 				ft_strrchr \
 				ft_strtrim \
 				ft_substr \
-				ft_strcmp 
+				ft_strcmp \
 
 FTLST_DIR	=	ft_lst/
 FTLST		=	ft_lstadd_back \
@@ -63,11 +63,11 @@ FTLST		=	ft_lstadd_back \
 				ft_lstlast \
 				ft_lstmap \
 				ft_lstnew \
-				ft_lstsize 
+				ft_lstsize \
 
 GNL_DIR		=	get_next_line/
 GNL			=	get_next_line \
-				get_next_line_utils 
+				get_next_line_utils \
 
 FTPRINTF_DIR	=	ft_printf/
 FTPRINTF		=	ft_printf \
@@ -78,7 +78,7 @@ FTPRINTF		=	ft_printf \
 					ft_handle_pointer	\
 					ft_handle_hex \
 					ft_handle_percent \
-					ft_printf_utils
+					ft_printf_utils \
 
 
 SRC_FILES+=$(addprefix $(FTIS_DIR),$(FTIS))
