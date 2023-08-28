@@ -5,7 +5,7 @@ OBJ_DIR		= obj/
 
 
 CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -I
 RM			= rm -f
 AR			= ar rcs
 
@@ -93,6 +93,9 @@ SRC_FILES+=$(addprefix $(FTPRINTF_DIR),$(FTPRINTF))
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+
+
+OBJF		=	.cache exists
 
 
 all: 			$(NAME)
