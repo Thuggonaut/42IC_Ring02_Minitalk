@@ -1,42 +1,49 @@
 #include "libft.h"
 
-char *convert(int value, char *ptr, int base)
+size_t	len_digits(int n)
 {
-    int tmp_value;
+	size_t	len;
 
-    tmp_value = value;
-    value /= base;
-    *ptr++ = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz" [35 + (tmp_value - value * base)];
-    while (value) 
-    {
-        tmp_value = value;
-        value /= base;
-        *ptr++ = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz" [35 + (tmp_value - value * base)];
-    }
-    return (ptr);
+	len = 0;
+	if (n < 0)
+	{
+		len++;
+		n *= -1;
+	}
+	if (n == 0)
+		len++;
+	while (n)
+	{
+		n /= 10;
+		len++;
+	}
+	return (len);
 }
 
-char *ft_itoa(int value, char *s, int base) 
+char	*ft_itoa(int n)
 {
-    char *ptr;
-    char *ptr1;
-    char tmp_char;
+	char	*str;
+	size_t	len;
+	long	nb;
 
-    ptr = s;
-    ptr1 = s;
-    if (base < 2 || base > 36) 
-    { 
-        s[0] = '\0'; 
-        return (s);
-    }
-    ptr = convert(value, ptr, base);
-    if (value < 0) *ptr++ = '-';
-    *ptr-- = '\0';
-    while(ptr1 < ptr) 
-    {
-        tmp_char = *ptr;
-        *ptr--= *ptr1;
-        *ptr1++ = tmp_char;
-    }
-    return (s);
+	nb = n;
+	len = len_digits(nb);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	str[len] = '\0';
+	if (nb < 0)
+	{
+		*str = '-';
+		nb *= -1;
+	}
+	if (nb == 0)
+		*str = '0';
+	while (nb)
+	{
+		*(str + len - 1) = nb % 10 + '0';
+		nb /= 10;
+		len--;
+	}
+	return (str);
 }
