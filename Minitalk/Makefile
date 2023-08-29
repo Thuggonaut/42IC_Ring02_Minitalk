@@ -70,11 +70,12 @@ bonus:
 				@cp $(LIBFT)/libft.a .
 				@make allbonus
 
+
 allbonus:		$(NAMECLB) $(NAMESVB)
 
 
-$(NAMECLB):		$(OBJBC) $(OBJF)
-				@$(CC) $(FLAGS) $(OBJBC) $(HEADER) libft.a -o $(NAMECLB)
+$(NAMECLB):		$(OBJCLB) $(OBJF)
+				@$(CC) $(FLAGS) $(OBJCLB) $(HEADER) libft.a -o $(NAMECLB)
 
 
 $(NAMESVB):		$(OBJSVB) $(OBJF)
