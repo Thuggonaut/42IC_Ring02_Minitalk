@@ -84,7 +84,7 @@ $(NAMESVB):		$(OBJSVB) $(OBJF)
 
 clean:
 				@$(RM) -r $(OBJ_DIR)
-				@$(RM) $(OBJF) *.out
+				@$(RM) $(OBJF)
 				@make clean -C $(LIBFT)
 			
 

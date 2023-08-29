@@ -123,7 +123,7 @@ $(OBJF):
 
 clean:
 				@$(RM) -r $(OBJ_DIR)
-				@$(RM) $(OBJF) *.o, *.a, *.out
+				@$(RM) $(OBJF)
 
 
 fclean:			clean
