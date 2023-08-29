@@ -52,7 +52,6 @@ FTSTR		=	ft_split \
 				ft_strrchr \
 				ft_strtrim \
 				ft_substr \
-				ft_strcmp \
 
 FTLST_DIR	=	ft_lst/
 FTLST		=	ft_lstadd_back \
