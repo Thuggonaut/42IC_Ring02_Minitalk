@@ -73,7 +73,7 @@ FTPRINTF		=	ft_printf \
 					ft_handle_char \
 					ft_handle_string \
 					ft_handle_int \
-					ft_handle_unsined \
+					ft_handle_unsigned \
 					ft_handle_pointer	\
 					ft_handle_hex \
 					ft_handle_percent \
