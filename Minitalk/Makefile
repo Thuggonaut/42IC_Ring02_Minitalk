@@ -1,101 +1,86 @@
-NAME			= client
-NAMESV			= server
-NAMECLB			= client_bonus
-NAMESVB			= server_bonus
+# Standard
+CLN					= client
+SVR					= server
+CLNBN				= client_bonus
+SVRBN				= server_bonus
+
+# Directories
+LIBFT				= ./libft
+SRC_DIR				= src/
+OBJ_DIR				= obj/
+
+# Compiler and Flags
+CC					= gcc
+CFLAGS				= -Wall -Werror -Wextra
+LDFLAGS				= -L$(LIBFT_DIR) -lft
+LINK_CMD 			= $(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
+RM					= rm -f
+
+# Source Files
+SRC_CLN				= client
+SRC_SVR				= server
+SRC_CLNBN			= client_bonus
+SRC_SVRBN			= server_bonus
+
+# Create full paths for source and object files
+SRCCL 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_CLN)))
+OBJCL 				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_CLN)))
+
+SRCSV 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_SVR)))
+OBJSV 				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_SVR)))
+
+SRCCLB 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_CLNBN)))
+OBJCLB				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_CLNBN)))
+
+SRCSVB 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_SVRBN)))
+OBJSVB 				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_SVRBN)))
 
 
-LIBFT			= libft
+all:				$(CLN) $(SVR)
 
 
-INC				= inc
-HEADER			= -I inc
-SRC_DIR			= src/
-OBJ_DIR			= obj/
-CC				= gcc
-FLAGS			= -Wall -Werror -Wextra
-FSANITIZE		= -fsanitize=address -g3
-RM				= rm -f
+$(LIBFT_DIR)/libft.a:
+					$(MAKE) -C $(LIBFT_DIR)
 
 
-SRCCL_FILES		= client
-SRCSV_FILES		= server
-SRCCLB_FILES	= client_bonus
-SRCSVB_FILES	= server_bonus
+$(CLN):				$(OBJCL) $(LIBFT) $(LIBFT_DIR)/libft.a
+					$(LINK_CMD)
 
 
-SRCCL 			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRCCL_FILES)))
-OBJCL 			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCCL_FILES)))
-
-SRCSV 			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRCSV_FILES)))
-OBJSV 			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCSV_FILES)))
-
-SRCCLB 			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRCCLB_FILES)))
-OBJCLB			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCCLB_FILES)))
-
-SRCSVB 			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRCSVB_FILES)))
-OBJSVB 			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCSVB_FILES)))
+$(SVR):				$(OBJSV) $(LIBFT) $(LIBFT_DIR)/libft.a
+					$(LINK_CMD)
 
 
-OBJF			= .cache_exists
+bonus:				$(CLNBN) $(SVRBN)
 
 
-start:
-				@make -C $(LIBFT)
-				@cp $(LIBFT)/libft.a .
-				@make all
+$(CLNBN):			$(OBJCLB) $(LIBFT) $(LIBFT_DIR)/libft.a
+					$(LINK_CMD)
 
 
-all:			$(NAME) $(NAMESV)
+$(SVRBN):			$(OBJSVB) $(LIBFT) $(LIBFT_DIR)/libft.a
+					$(LINK_CMD)
+
+# Compile object files from source files
+$(OBJ_DIR):
+					mkdir -p $(OBJ_DIR)
 
 
-$(NAME):		$(OBJCL) $(OBJF)
-				@$(CC) $(FLAGS) $(OBJCL) $(HEADER) libft.a -o $(NAME)
-
-
-$(NAMESV):		$(OBJSV) $(OBJF)
-				@$(CC) $(FLAGS) $(OBJSV) $(HEADER) libft.a -o $(NAMESV)
-
-
-$(OBJ_DIR)%.o:	$(SRC_DIR)%.c $(OBJF)
-				@$(CC) $(FLAGS) $(HEADER) -c $< -o $@
-
-
-$(OBJF):
-				@mkdir -p $(OBJ_DIR)
-				@touch $(OBJF)
-
-
-bonus:
-				@make -C $(LIBFT)
-				@cp $(LIBFT)/libft.a .
-				@make allbonus
-
-
-allbonus:		$(NAMECLB) $(NAMESVB)
-
-
-$(NAMECLB):		$(OBJCLB) $(OBJF)
-				@$(CC) $(FLAGS) $(OBJCLB) $(HEADER) libft.a -o $(NAMECLB)
-
-
-$(NAMESVB):		$(OBJSVB) $(OBJF)
-				@$(CC) $(FLAGS) $(OBJSVB) $(HEADER) libft.a -o $(NAMESVB)
+$(OBJ_DIR)/%.o: 	$(SRC_DIR)/%.c $(OBJ_DIR)
+					$(CC) $(CFLAGS) -c $< -o $@
 
 
 clean:
-				@$(RM) -r $(OBJ_DIR)
-				@$(RM) $(OBJF)
-				@make clean -C $(LIBFT)
+					$(MAKE) clean -C $(LIBFT_DIR)
+					$(RM) -r $(OBJ_DIR)
 			
 
-fclean:			clean
-				@$(RM) $(NAME) $(NAMESV) $(NAMECLB) $(NAMESVB)
-				@$(RM) $(LIBFT)/libft.a
-				@$(RM) libft.a
-				@find . -name ".DS_Store" -delete
+fclean:				clean
+					@$(RM) $(CLN) $(SVR) $(CLNBN) $(SVRBN)
+					$(RM) $(LIBFT_DIR)/libft.a
 
 
-re:				fclean all
+re:					fclean all
 
-
-.PHONY:			start all clean fclean re bonus
+# Phony targets represent actions not files
+.PHONY:				start all clean fclean re bonus
