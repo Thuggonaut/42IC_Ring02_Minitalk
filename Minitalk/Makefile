@@ -40,7 +40,7 @@ all:				$(CLN) $(SVR)
 
 
 $(LIBFT_DIR)/libft.a:
-					$(MAKE) -C $(LIBFT_DIR)
+					@make -C $(LIBFT_DIR)
 
 
 $(CLN):				$(OBJCL) $(LIBFT) $(LIBFT_DIR)/libft.a
@@ -71,7 +71,7 @@ $(OBJ_DIR)/%.o: 	$(SRC_DIR)/%.c $(OBJ_DIR)
 
 
 clean:
-					$(MAKE) clean -C $(LIBFT_DIR)
+					@make clean -C $(LIBFT_DIR)
 					$(RM) -r $(OBJ_DIR)
 			
 
