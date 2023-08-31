@@ -1,5 +1,5 @@
 # Standard
-CLN					= client
+NAME				= client
 SVR					= server
 CLNBN				= client_bonus
 SVRBN				= server_bonus
@@ -12,7 +12,7 @@ OBJ_DIR				= obj/
 # Compiler and Flags
 CC					= gcc
 CFLAGS				= -Wall -Werror -Wextra
-LDFLAGS				= -L$(LIBFT_DIR) -lft
+LDFLAGS				= -L$(LIBFT) -lft
 LINK_CMD 			= $(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
 RM					= rm -f
 
@@ -39,26 +39,26 @@ OBJSVB 				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_SVRBN)))
 all:				$(CLN) $(SVR)
 
 
-$(LIBFT_DIR)/libft.a:
-					@make -C $(LIBFT_DIR)
+$(LIBFT)/libft.a:
+					@make -C $(LIBFT)
 
 
-$(CLN):				$(OBJCL) $(LIBFT) $(LIBFT_DIR)/libft.a
+$(NAME):			$(OBJCL) $(LIBFT) $(LIBFT)/libft.a
 					$(LINK_CMD)
 
 
-$(SVR):				$(OBJSV) $(LIBFT) $(LIBFT_DIR)/libft.a
+$(SVR):				$(OBJSV) $(LIBFT) $(LIBFT)/libft.a
 					$(LINK_CMD)
 
 
 bonus:				$(CLNBN) $(SVRBN)
 
 
-$(CLNBN):			$(OBJCLB) $(LIBFT) $(LIBFT_DIR)/libft.a
+$(CLNBN):			$(OBJCLB) $(LIBFT) $(LIBFT)/libft.a
 					$(LINK_CMD)
 
 
-$(SVRBN):			$(OBJSVB) $(LIBFT) $(LIBFT_DIR)/libft.a
+$(SVRBN):			$(OBJSVB) $(LIBFT) $(LIBFT)/libft.a
 					$(LINK_CMD)
 
 # Compile object files from source files
@@ -71,13 +71,13 @@ $(OBJ_DIR)/%.o: 	$(SRC_DIR)/%.c $(OBJ_DIR)
 
 
 clean:
-					@make clean -C $(LIBFT_DIR)
+					@make clean -C $(LIBFT)
 					$(RM) -r $(OBJ_DIR)
 			
 
 fclean:				clean
-					@$(RM) $(CLN) $(SVR) $(CLNBN) $(SVRBN)
-					$(RM) $(LIBFT_DIR)/libft.a
+					@$(RM) $(NAME) $(SVR) $(CLNBN) $(SVRBN)
+					$(RM) $(LIBFT)/libft.a
 
 
 re:					fclean all
