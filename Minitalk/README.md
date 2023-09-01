@@ -1,9 +1,72 @@
 Minitalk
 
+# Standard
+NAME 			= client
+SVR 			= server
+CLNBN 			= client_bonus
+SVRBN 			= server_bonus
+
+# Directories
+LIBFT 			= libft
+INC 			= inc
+HEADER 			= -I inc
+SRC_DIR 		= src/
+OBJ_DIR 		= obj/
+
+# Compiler and Flags
+CC 				= gcc
+CFLAGS 			= -Wall -Werror -Wextra
+RM 				= rm -f
+
+# Source Files
+SRC 			= client server client_bonus server_bonus
+OBJ 			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC)))
+
+# If certain objects have already been created, avoid unnecessary recompilation of source files when they haven't changed
+OBJF 			= .cache_exists
+
+# Targets
+start: 			@make -C $(LIBFT)
+				@cp $(LIBFT)/libft.a .
+				@make all
+				@make bonus
+
+all: 			$(NAME) $(SVR)
+
+$(NAME) $(SVR): $(OBJ) $(OBJF)
+				$(CC) $(CFLAGS) $^ $(HEADER) libft.a -o $@
+
+bonus: 			$(CLNBN) $(SVRBN)
+
+$(CLNBN) $(SVRBN): $(OBJ) $(OBJF)
+				$(CC) $(CFLAGS) $^ $(HEADER) libft.a -o $@
+
+$(OBJF):
+				mkdir -p $(OBJ_DIR)
+				touch $(OBJF)
+
+clean:
+				$(RM) -r $(OBJ_DIR)
+				$(RM) $(OBJF)
+				make clean -C $(LIBFT)
+
+fclean: 		clean
+				$(RM) $(NAME) $(SVR) $(CLNBN) $(SVRBN)
+				$(RM) $(LIBFT)/libft.a
+				$(RM) libft.a
+
+re: 			fclean all
+
+.PHONY: 		start all clean fclean re bonus
+
+
+////////////////////////////////////////////////////////////////////////
+
+
 NAME			= client
-NAMESV			= server
-NAMECLB			= client_bonus
-NAMESVB			= server_bonus
+SVR				= server
+CLNBN			= client_bonus
+SVRBN			= server_bonus
 
 
 LIBFT			= libft
@@ -15,27 +78,26 @@ SRC_DIR			= src/
 OBJ_DIR			= obj/
 CC				= gcc
 FLAGS			= -Wall -Werror -Wextra
-FSANITIZE		= -fsanitize=address -g3
 RM				= rm -f
 
 
-SRCCL_FILES		= client
-SRCSV_FILES		= server
-SRCCLB_FILES	= client_bonus
-SRCSVB_FILES	= server_bonus
+SRC_CLN			= client
+SRC_SVR			= server
+SRC_CLNBN		= client_bonus
+SRC_SVRBN		= server_bonus
 
 
-SRCCL 			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRCCL_FILES)))
-OBJCL 			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCCL_FILES)))
+SRCCL 			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_CLN)))
+OBJCL 			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_CLN)))
 
-SRCSV 			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRCSV_FILES)))
-OBJSV 			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCSV_FILES)))
+SRCSV 			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_SVR)))
+OBJSV 			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_SVR)))
 
-SRCCLB 			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRCCLB_FILES)))
-OBJCLB			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCCLB_FILES)))
+SRCCLB 			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_CLNBN)))
+OBJCLB			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_CLNBN)))
 
-SRCSVB 			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRCSVB_FILES)))
-OBJSVB 			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCSVB_FILES)))
+SRCSVB 			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_SVRBN)))
+OBJSVB 			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_SVRBN)))
 
 
 OBJF			= .cache_exists
@@ -47,15 +109,15 @@ start:
 				@make all
 
 
-all:			$(NAME) $(NAMESV)
+all:			$(NAME) $(SVR)
 
 
 $(NAME):		$(OBJCL) $(OBJF)
 				@$(CC) $(FLAGS) $(OBJCL) $(HEADER) libft.a -o $(NAME)
 
 
-$(NAMESV):		$(OBJSV) $(OBJF)
-				@$(CC) $(FLAGS) $(OBJSV) $(HEADER) libft.a -o $(NAMESV)
+$(SVR):			$(OBJSV) $(OBJF)
+				@$(CC) $(FLAGS) $(OBJSV) $(HEADER) libft.a -o $(SVR)
 
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c $(OBJF)
@@ -73,15 +135,15 @@ bonus:
 				@make allbonus
 
 
-allbonus:		$(NAMECLB) $(NAMESVB)
+allbonus:		$(CLNBN) $(SVRBN)
 
 
-$(NAMECLB):		$(OBJCLB) $(OBJF)
-				@$(CC) $(FLAGS) $(OBJCLB) $(HEADER) libft.a -o $(NAMECLB)
+$(CLNBN):		$(OBJCLB) $(OBJF)
+				@$(CC) $(FLAGS) $(OBJCLB) $(HEADER) libft.a -o $(CLNBN)
 
 
-$(NAMESVB):		$(OBJSVB) $(OBJF)
-				@$(CC) $(FLAGS) $(OBJSVB) $(HEADER) libft.a -o $(NAMESVB)
+$(SVRBN):		$(OBJSVB) $(OBJF)
+				@$(CC) $(FLAGS) $(OBJSVB) $(HEADER) libft.a -o $(SVRBN)
 
 
 clean:
@@ -91,7 +153,7 @@ clean:
 			
 
 fclean:			clean
-				@$(RM) $(NAME) $(NAMESV) $(NAMECLB) $(NAMESVB)
+				@$(RM) $(NAME) $(SVR	) $(CLNBN) $(SVRBN)
 				@$(RM) $(LIBFT)/libft.a
 				@$(RM) libft.a
 				@find . -name ".DS_Store" -delete
@@ -101,3 +163,93 @@ re:				fclean all
 
 
 .PHONY:			start all clean fclean re bonus
+
+
+//////////////////////////////////////////////////////////////
+
+# Standard
+NAME				= client
+SVR					= server
+CLNBN				= client_bonus
+SVRBN				= server_bonus
+
+# Directories
+LIBFT				= ./libft
+SRC_DIR				= src/
+OBJ_DIR				= obj/
+
+# Compiler and Flags
+CC					= gcc
+CFLAGS				= -Wall -Werror -Wextra
+LDFLAGS				= -L$(LIBFT) -lft
+LINK_CMD 			= $(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
+RM					= rm -f
+
+# Source Files
+SRC_CLN				= client
+SRC_SVR				= server
+SRC_CLNBN			= client_bonus
+SRC_SVRBN			= server_bonus
+
+# Create full paths for source and object files
+SRCCL 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_CLN)))
+OBJCL 				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_CLN)))
+
+SRCSV 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_SVR)))
+OBJSV 				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_SVR)))
+
+SRCCLB 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_CLNBN)))
+OBJCLB				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_CLNBN)))
+
+SRCSVB 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_SVRBN)))
+OBJSVB 				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_SVRBN)))
+
+
+all:				$(CLN) $(SVR)
+
+
+$(LIBFT)/libft.a:
+					@make -C $(LIBFT)
+
+
+$(NAME):			$(OBJCL) $(LIBFT) $(LIBFT)/libft.a
+					$(LINK_CMD)
+
+
+$(SVR):				$(OBJSV) $(LIBFT) $(LIBFT)/libft.a
+					$(LINK_CMD)
+
+
+bonus:				$(CLNBN) $(SVRBN)
+
+
+$(CLNBN):			$(OBJCLB) $(LIBFT) $(LIBFT)/libft.a
+					$(LINK_CMD)
+
+
+$(SVRBN):			$(OBJSVB) $(LIBFT) $(LIBFT)/libft.a
+					$(LINK_CMD)
+
+# Compile object files from source files
+$(OBJ_DIR):
+					mkdir -p $(OBJ_DIR)
+
+
+$(OBJ_DIR)/%.o: 	$(SRC_DIR)/%.c $(OBJ_DIR)
+					$(CC) $(CFLAGS) -c $< -o $@
+
+
+clean:
+					@make clean -C $(LIBFT)
+					$(RM) -r $(OBJ_DIR)
+			
+
+fclean:				clean
+					@$(RM) $(NAME) $(SVR) $(CLNBN) $(SVRBN)
+					$(RM) $(LIBFT)/libft.a
+
+
+re:					fclean all
+
+# Phony targets represent actions not files
+.PHONY:				start all clean fclean re bonus

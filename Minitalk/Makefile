@@ -5,15 +5,15 @@ CLNBN				= client_bonus
 SVRBN				= server_bonus
 
 # Directories
-LIBFT				= ./libft
+LIBFT				= libft
+INC					= inc
+HEADER				= -I inc
 SRC_DIR				= src/
 OBJ_DIR				= obj/
 
 # Compiler and Flags
 CC					= gcc
 CFLAGS				= -Wall -Werror -Wextra
-LDFLAGS				= -L$(LIBFT) -lft
-LINK_CMD 			= $(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
 RM					= rm -f
 
 # Source Files
@@ -35,49 +35,58 @@ OBJCLB				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_CLNBN)))
 SRCSVB 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_SVRBN)))
 OBJSVB 				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_SVRBN)))
 
+# If certain objects have already been created, avoid unnecessary recompilation of source files when they haven't changed
+OBJF				= .cache_exists
 
-all:				$(CLN) $(SVR)
-
-
-$(LIBFT)/libft.a:
+# Targets
+start:
 					@make -C $(LIBFT)
+					@cp $(LIBFT)/libft.a .
+					@make all
+					@make bonus
 
 
-$(NAME):			$(OBJCL) $(LIBFT) $(LIBFT)/libft.a
-					$(LINK_CMD)
+all:				$(NAME) $(SVR)
 
 
-$(SVR):				$(OBJSV) $(LIBFT) $(LIBFT)/libft.a
-					$(LINK_CMD)
+$(NAME):			$(OBJCL) $(OBJF)
+					@$(CC) $(FLAGS) $(OBJCL) $(HEADER) libft.a -o $(NAME)
 
+
+$(SVR):				$(OBJSV) $(OBJF)
+					@$(CC) $(FLAGS) $(OBJSV) $(HEADER) libft.a -o $(SVR)
+					
 
 bonus:				$(CLNBN) $(SVRBN)
 
 
-$(CLNBN):			$(OBJCLB) $(LIBFT) $(LIBFT)/libft.a
-					$(LINK_CMD)
+$(CLNBN):			$(OBJCLB) $(OBJF)
+					@$(CC) $(FLAGS) $(OBJCLB) $(HEADER) libft.a -o $(CLNBN)
 
 
-$(SVRBN):			$(OBJSVB) $(LIBFT) $(LIBFT)/libft.a
-					$(LINK_CMD)
+$(SVRBN):			$(OBJSVB) $(OBJF)
+					@$(CC) $(FLAGS) $(OBJSVB) $(HEADER) libft.a -o $(SVRBN)
 
 # Compile object files from source files
-$(OBJ_DIR):
-					mkdir -p $(OBJ_DIR)
+$(OBJF):
+					@mkdir -p $(OBJ_DIR)
+					@touch $(OBJF)
 
 
-$(OBJ_DIR)/%.o: 	$(SRC_DIR)/%.c $(OBJ_DIR)
-					$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)%.o:		$(SRC_DIR)%.c $(OBJF)
+					@$(CC) $(FLAGS) $(HEADER) -c $< -o $@
 
 
 clean:
+					@$(RM) -r $(OBJ_DIR)
+					@$(RM) $(OBJF)
 					@make clean -C $(LIBFT)
-					$(RM) -r $(OBJ_DIR)
 			
 
 fclean:				clean
 					@$(RM) $(NAME) $(SVR) $(CLNBN) $(SVRBN)
-					$(RM) $(LIBFT)/libft.a
+					@$(RM) $(LIBFT)/libft.a
+					@$(RM) libft.a
 
 
 re:					fclean all
