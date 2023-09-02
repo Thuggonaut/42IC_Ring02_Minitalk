@@ -1,4 +1,4 @@
-#include "minitalk_bonus.h"
+#include "../inc/minitalk_bonus.h"
 
 void	sig_handler(int sig, siginfo_t *info, void *context) //Define a function as a signal handler that recieves and interprets signals from the server. See #1. This is part of the `struct sigaction`'s prototype. See #3
 {
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 	{
 		sigaction(SIGUSR1, &sig, NULL); //Set up the signal handlers for SIGUSR1 and SIGUSR2 signals, in this case, both are handled the same. `&sig` refers to the `struct sigaction` `sig` that was earlier configured
 		sigaction(SIGUSR2, &sig, NULL); //`NULL` indicates we're not requesting information on, or modifying the previous configuration
-		pause (); 
+		pause(); 
 	}
 	return (0); //If the wrong number of arguments are provided, it prints an error message and returns `0`
 }

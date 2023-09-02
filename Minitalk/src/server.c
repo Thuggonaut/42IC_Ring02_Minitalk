@@ -1,4 +1,4 @@
-#include "minitalk.h"
+#include "../inc/minitalk.h"
 
 void	sig_handler(int sig) //Define a function to handle signals recieved by the server. It will accumulate bits from received signals, effectively converting the signal patterns into characters
 {
@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 	{
 		signal(SIGUSR1, sig_handler); //Handle the relevant signal
 		signal(SIGUSR2, sig_handler); 
-		pause (); //Suspend the execution of the program until a signal is received
+		pause(); //Suspend the execution of the program until a signal is received
 	}
 	return (0); //If the wrong number of arguments are provided, it prints an error message and returns `0`
 }
