@@ -7,36 +7,24 @@ SVRBN				= server_bonus
 # Directories
 LIBFT				= libft
 INC					= inc
-HEADER				= -I inc
 SRC_DIR				= src/
 OBJ_DIR				= obj/
 
-# Compiler and Flags
+# Compiler and CFlags
 CC					= gcc
-CFLAGS				= -Wall -Werror -Wextra
+CFLAGS				= -Wall -Werror -Wextra -I
 RM					= rm -f
 
-# Source Files
-SRC_CLN				= client
-SRC_SVR				= server
-SRC_CLNBN			= client_bonus
-SRC_SVRBN			= server_bonus
-
 # Create full paths for source and object files
-SRCCL 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_CLN)))
-OBJCL 				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_CLN)))
+SRCCL 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(NAME)))
+SRCSV 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SVR)))
+SRCCLB 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(CLNBN)))
+SRCSVB 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SVRBN)))
 
-SRCSV 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_SVR)))
-OBJSV 				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_SVR)))
-
-SRCCLB 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_CLNBN)))
-OBJCLB				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_CLNBN)))
-
-SRCSVB 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_SVRBN)))
-OBJSVB 				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_SVRBN)))
-
-# If certain objects have already been created, avoid unnecessary recompilation of source files when they haven't changed
-OBJF				= .cache_exists
+OBJCL 				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(NAME)))
+OBJSV 				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SVR)))
+OBJCLB				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(CLNBN)))
+OBJSVB 				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SVRBN)))
 
 # Targets
 start:
@@ -48,38 +36,28 @@ start:
 
 all:				$(NAME) $(SVR)
 
+$(NAME):			$(OBJCL) 
+					@$(CC) $(CFLAGS) $(INC) $(OBJCL) libft.a -o $(NAME)
 
-$(NAME):			$(OBJCL) $(OBJF)
-					@$(CC) $(FLAGS) $(OBJCL) $(HEADER) libft.a -o $(NAME)
-
-
-$(SVR):				$(OBJSV) $(OBJF)
-					@$(CC) $(FLAGS) $(OBJSV) $(HEADER) libft.a -o $(SVR)
+$(SVR):				$(OBJSV) 
+					@$(CC) $(CFLAGS) $(INC) $(OBJSV) libft.a -o $(SVR)
 					
-
 bonus:				$(CLNBN) $(SVRBN)
 
+$(CLNBN):			$(OBJCLB) 
+					@$(CC) $(CFLAGS) $(INC) $(OBJCLB) libft.a -o $(CLNBN)
 
-$(CLNBN):			$(OBJCLB) $(OBJF)
-					@$(CC) $(FLAGS) $(OBJCLB) $(HEADER) libft.a -o $(CLNBN)
-
-
-$(SVRBN):			$(OBJSVB) $(OBJF)
-					@$(CC) $(FLAGS) $(OBJSVB) $(HEADER) libft.a -o $(SVRBN)
+$(SVRBN):			$(OBJSVB) 
+					@$(CC) $(CFLAGS) $(INC) $(OBJSVB) libft.a -o $(SVRBN)
 
 # Compile object files from source files
-$(OBJF):
-					@mkdir -p $(OBJ_DIR)
-					@touch $(OBJF)
-
-
-$(OBJ_DIR)%.o:		$(SRC_DIR)%.c $(OBJF)
-					@$(CC) $(FLAGS) $(HEADER) -c $< -o $@
+$(OBJ_DIR)%.o:		$(SRC_DIR)%.c 
+					@mkdir -p $(@D)
+					@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 
 clean:
 					@$(RM) -r $(OBJ_DIR)
-					@$(RM) $(OBJF)
 					@make clean -C $(LIBFT)
 			
 
