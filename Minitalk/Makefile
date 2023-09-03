@@ -59,6 +59,7 @@ clean:
 			
 fclean:				clean
 					@$(RM) $(NAME) $(SVR) $(CLNBN) $(SVRBN)
+					@$(RM) $(LIBFT)
 
 re:					fclean all
 

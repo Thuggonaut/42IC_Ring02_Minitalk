@@ -5,7 +5,6 @@ void	sig_handler(int sig, siginfo_t *info, void *context) //Define a function as
 	static int	bit; 
 	static int	i;
 
-	(void)info; //Suppress compiler warnings about unused function parameters
 	(void)context; //Although unused in this specific implementation, these parameters are required by the function signature due to the way signal handlers work
 	if (sig == SIGUSR1)
 		i |= (0x01 << bit); 
@@ -35,7 +34,7 @@ int	main(int argc, char **argv)
 	ft_printf("Waiting for a message...\n"); 
 	sig.sa_sigaction = sig_handler; //Configure the sigaction struct to handle signals upon receiving. It sets `sig_handler` as the signal handler. See #3
 	sigemptyset(&sig.sa_mask); //Empty/clear the signal mask. See #4
-	sig.sa_flags = 0; //Set the flags to `0` indicating that we want to use the default behavior for signal handling (the signal handler (sa_sigaction) will execute without any special modifications)
+	sig.sa_flags = SA_SIGINFO; //??????????????????
 	while (argc == 1)
 	{
 		sigaction(SIGUSR1, &sig, NULL); //Set up the signal handlers for SIGUSR1 and SIGUSR2 signals, in this case, both are handled the same. `&sig` refers to the `struct sigaction` `sig` that was earlier configured

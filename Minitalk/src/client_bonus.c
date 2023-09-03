@@ -1,11 +1,19 @@
+/*
+MAKE NOTES:
+
+1. UNICODE CHARACTERS ARE PRINTED FOR BOTH MANDATORY AND BONUS IS DUE TO THE BITS
+
+2. ACKNOWLEDGEMENT OF RECIEPT IS SENT PER SIGNAL. A "MESSAGE" IS EQUIVALENT TO ONE SIGNAL. A '\0' IS REPRESENTED BY ONE SIGNAL
+*/
+
 #include "../inc/minitalk_bonus.h"
 
 static void	sig_confirm(int sig) //Define a static function that takes in an integer representing a signal, and acknowledges reciept upon receiving it
 {
 	if (sig == SIGUSR1)
-		ft_printf("signal received");
+		ft_printf("Message received\n");
 	else
-		ft_printf("signal received");
+		ft_printf("Message received\n");
 }
 
 void	send_bits(pid_t pid, char c) 
@@ -27,12 +35,12 @@ void	send_bits(pid_t pid, char c)
 int	main(int argc, char **argv) 
 {
 	pid_t	pid; 
-	int		*msg; //Declaring an integer pointer instead of a character pointer, allows the handling of not only ASCII characters but also Unicode characters. See #1
+	char	*msg;
 
 	if (argc == 3) 
 	{
 		pid = ft_atoi(argv[1]); 
-		msg = (int*)argv[2];
+		msg = argv[2];
 		while (*msg != '\0') 
 		{
 			signal(SIGUSR1, sig_confirm); //Each time a signal is received, acknowledge reciept
@@ -40,7 +48,7 @@ int	main(int argc, char **argv)
 			send_bits(pid, *msg); 
 			msg++; 
 		}
-		send_bits(pid, '\n'); 
+		send_bits(pid, '\n');
 	}
 	else
 	{
