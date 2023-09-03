@@ -26,7 +26,6 @@ the server), but you will have to justify their use.
   ◦ usleep
   ◦ exit
 
-
 ## Mandatory Part:
 
 1. You must create a communication program in the form of a client and a server.
