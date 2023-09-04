@@ -9,13 +9,13 @@ The purpose of this project is to code a small data change program using UNIX si
 - Keep an eye out for the **"Key"** words, that will imply significance for coding our program.
 - We will be completing both the [Mandatory](https://github.com/Thuggonaut/42IC_Ring02_Minitalk/blob/main/README.md#the-mandatory-part) and [Bonus](https://github.com/Thuggonaut/42IC_Ring02_Minitalk/blob/main/README.md#the-bonus-part) parts. Here is the outline:
 	- Step 1: [Learn UNIX signals](https://github.com/Thuggonaut/42IC_Ring02_Minitalk/blob/main/README.md#step-1-learn-unix-signals)
-	- Step 2: [Understand SIGUSR1 and SIGUSR2 signals]
-	- Step 3: [Learn the functions permitted for use]
-	- Step 4: [Understand the Minitalk assignment and concepts]
-	- Step 5: [Write the structure of directories and files]
-	- Step 6: [Code Minitalk]
-	- Step 7: [Test Minitalk]
-	- Step 8: [Evaluation checklist]
+	- Step 2: [Understand SIGUSR1 and SIGUSR2 signals](https://github.com/Thuggonaut/42IC_Ring02_Minitalk/blob/main/README.md#step-2-understand-sigusr1-and-sigusr2-signals)
+	- Step 3: [Learn the functions permitted for use](https://github.com/Thuggonaut/42IC_Ring02_Minitalk/blob/main/README.md#step-3-learn-the-functions-permitted-for-use)
+	- Step 4: [Understand the Minitalk assignment and concepts](https://github.com/Thuggonaut/42IC_Ring02_Minitalk/blob/main/README.md#step-4-understand-the-minitalk-assignment-and-concepts)
+	- Step 5: [Write the structure of directories and files](https://github.com/Thuggonaut/42IC_Ring02_Minitalk/blob/main/README.md#step-5-write-the-structure-of-directories-and-files)
+	- Step 6: [Code Minitalk](https://github.com/Thuggonaut/42IC_Ring02_Minitalk/blob/main/README.md#step-6-code-minitalk)
+	- Step 7: [Test Minitalk](https://github.com/Thuggonaut/42IC_Ring02_Minitalk/blob/main/README.md#step-7-test-minitalk)
+	- Step 8: [Evaluation checklist](https://github.com/Thuggonaut/42IC_Ring02_Minitalk/blob/main/README.md#step-8-evaluation-checklist)
 
 
 ## The Mandatory Part:
@@ -695,7 +695,7 @@ Minitalk/
 ```
 
 ## Step 6: Code Minitalk
-- Now that we understand what Minitalk entails, let's write some pseudocode to see how we might tackle this project
+Now that we understand what Minitalk entails, let's write some pseudocode to see how we might tackle this project
 
 - For the client:
 
@@ -795,7 +795,7 @@ Minitalk/
 
 
 ## Step 8: Evaluation Checklist
-- Ensure you pass the following as required by the project before submission:
+Ensure you pass the following as required by the project before submission:
 
 #### 1. Prerequisites:
 - [ ] The project submitted has the correct directory and file names, and only includes the neccessary files: Makefile; server.c; client.c; (if Bonus part was done: server_bonus.c; client_bonus.c).
