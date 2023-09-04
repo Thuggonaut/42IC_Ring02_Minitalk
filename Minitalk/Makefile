@@ -28,7 +28,6 @@ OBJSVB 				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SVRBN)))
 
 # Targets
 start:				
-					@make -C ./libft
 					@make all
 					@make bonus
 
