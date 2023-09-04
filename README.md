@@ -695,7 +695,7 @@ Minitalk/
 ```
 
 ## 🔷 Step 6: Code Minitalk
-Now that we understand what Minitalk entails, let's write some pseudocode to see how we might tackle this project
+Now that we understand what Minitalk entails, let's write some pseudocode to see how we might tackle this project.
 
 - For the client:
 
