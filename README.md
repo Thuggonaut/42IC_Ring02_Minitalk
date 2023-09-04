@@ -590,106 +590,109 @@ Only SIGUSR1 and SIGUSR2 signals are permitted for use.
 ## 🔷 Step 4: Understand the Minitalk assignment and concepts
 
 🔹 **1. What does “create a communication program in the form of a client and a server” mean?**
-    - To develop an application that allows communication between two separate entities: a client and a server.
-    - The client and server will interact with each other using SIGUSR1 and SIGUSR2 signals.
+- To develop an application that allows communication between two separate entities: a client and a server.
+- The client and server will interact with each other using SIGUSR1 and SIGUSR2 signals.
 
 🔹 **2. What is a client?**
-    - A client initiates communication and sends requests.
-    - In the context of our assignment, the client is responsible for sending a message to the server, requesting it to process the provided string. 
-    - The client takes two parameters: 
-        - the server's PID (Process ID) and 
-        - the string to send. 
-    - After sending the request, the client waits for an acknowledgment from the server (Bonus part).
+- A client initiates communication and sends requests.
+- In the context of our assignment, the client is responsible for sending a message to the server, requesting it to process the provided string. 
+- The client takes two parameters: 
+    - the server's PID (Process ID) and 
+    - the string to send. 
+- After sending the request, the client waits for an acknowledgment from the server (Bonus part).
 
 🔹 **3. What is a server?**
-    - The server should be started first and print its Process ID (PID) after launch.
-    - A server receives and processes client requests before sending back responses.
-    - In the context of our assignment, the server would be responsible for receiving messages from clients and processing the provided strings. 
-    - After processing, the server acknowledges the receipt by sending a signal back to the client (Bonus part). 
+- The server should be started first and print its Process ID (PID) after launch.
+- A server receives and processes client requests before sending back responses.
+- In the context of our assignment, the server would be responsible for receiving messages from clients and processing the provided strings. 
+- After processing, the server acknowledges the receipt by sending a signal back to the client (Bonus part). 
 
 🔹 **4. What is a PID?**
-    - A Process Identifier (PID) is a unique number used to uniquely identify an active process.
-    - This number may be used as a parameter in various function calls, allowing processes to be manipulated, such as adjusting the process's priority or killing it altogether.
-    - The current process ID is provided by a getpid() system call. 
-        - The process ID of a parent process is obtainable by a getpid() system call. 
-    - In the context of our assignment, the server will print its PID after it launches. 
-        - The client program needs to know the server's PID to send signals to it. 
-        - This is why the server's PID is one of the parameters that the client takes. We will input the server's PID when we run the client program.
-        - This PID will then be used by the client to communicate with/send signals to the server.
-            - This is usually done using the kill() function, which sends a signal to a process. 
-            - In the context of our assignment, the signals will be SIGUSR1 and SIGUSR2.
-        - The server, upon receiving the signals, will handle them accordingly. 
-            - This is usually done by setting up signal handlers using the signal() or sigaction() function.
+- A Process Identifier (PID) is a unique number used to uniquely identify an active process.
+- This number may be used as a parameter in various function calls, allowing processes to be manipulated, such as adjusting the process's priority or killing it altogether.
+- The current process ID is provided by a getpid() system call. 
+    - The process ID of a parent process is obtainable by a getpid() system call. 
+- In the context of our assignment, the server will print its PID after it launches. 
+    - The client program needs to know the server's PID to send signals to it. 
+    - This is why the server's PID is one of the parameters that the client takes. We will input the server's PID when we run the client program.
+    - This PID will then be used by the client to communicate with/send signals to the server.
+        - This is usually done using the kill() function, which sends a signal to a process. 
+        - In the context of our assignment, the signals will be SIGUSR1 and SIGUSR2.
+    - The server, upon receiving the signals, will handle them accordingly. 
+        - This is usually done by setting up signal handlers using the signal() or sigaction() function.
 
 🔹 **5. How do we get the client to send the string input to the server?**
-    - Recall, signals can only transmit one bit at a time, and since we're only permitted to use SIGUSR1 and SIGUSR2 signals to communicate, how can we achieve this?
-        - Recall, a string is made up of characters (chars), and each char has 1 byte, which consists of 8 bits.
-        - If each character can be represented by 8 bits in binary, and binary is composed of 0s and 1s, then:
-            - We can use for instance, SIGUSR1 for the binary digit 1, and SIGUSR2 for the binary digit 0 to encode and decode our strings.
-            - This is where bitwise operations comes in to play.
-            - For the client, we can iterate through each bit (binary digit) of a character, and send the server the relevant signals depending on whether it's a 0 or 1(like Morse code :smile). 
-            - For example:
+- Recall, signals can only transmit one bit at a time, and since we're only permitted to use SIGUSR1 and SIGUSR2 signals to communicate, how can we achieve this?
+    - Recall, a string is made up of characters (chars), and each char has 1 byte, which consists of 8 bits.
+    - If each character can be represented by 8 bits in binary, and binary is composed of 0s and 1s, then:
+        - We can use for instance, SIGUSR1 for the binary digit 1, and SIGUSR2 for the binary digit 0 to encode and decode our strings.
+        - This is where bitwise operations comes in to play.
+        - For the client, we can iterate through each bit (binary digit) of a character, and send the server the relevant signals depending on whether it's a 0 or 1(like Morse code :smile). 
+        - For example:
 
-            - The character 'A' (ASCII value 65):
-            
-            - The binary representation of 'A': 01000001
-            - The goal is to send each bit (0 or 1) to the server using signals. 
-            - So, we need a function say, `send_bits()` to achieve this by iterating through the bits of the character and sending a signal (SIGUSR1 or SIGUSR2) to the server based on the value of each bit.
+        - The character 'A' (ASCII value 65):
+        
+        - The binary representation of 'A': 01000001
+        - The goal is to send each bit (0 or 1) to the server using signals. 
+        - So, we need a function say, `send_bits()` to achieve this by iterating through the bits of the character and sending a signal (SIGUSR1 or SIGUSR2) to the server based on the value of each bit.
 
-                ```
-                Character 'A' (ASCII 65) - Binary: 01000001
+            ```
+            Character 'A' (ASCII 65) - Binary: 01000001
 
-                Bit:      0       1       0       0       0       0       0       1
-                Signal:   SIGUSR2 SIGUSR1 SIGUSR2 SIGUSR2 SIGUSR2 SIGUSR2 SIGUSR2 SIGUSR1
-                ```
+            Bit:      0       1       0       0       0       0       0       1
+            Signal:   SIGUSR2 SIGUSR1 SIGUSR2 SIGUSR2 SIGUSR2 SIGUSR2 SIGUSR2 SIGUSR1
+            ```
 
-            - In this example:
-                - Each column represents a bit of the character.
-                - The bit's value is shown above it (0 or 1).
-                - The signal sent to the server is indicated below each bit column. 
-                - A SIGUSR1 signal is sent for a bit value of 1, and a SIGUSR2 signal is sent for a bit value of 0.
+        - In this example:
+            - Each column represents a bit of the character.
+            - The bit's value is shown above it (0 or 1).
+            - The signal sent to the server is indicated below each bit column. 
+            - A SIGUSR1 signal is sent for a bit value of 1, and a SIGUSR2 signal is sent for a bit value of 0.
+
 
 🔹 **6. How do we get the server to print the string received from the client?**
-        - As the `send_bits` function iterates through each bit of the character, it sends the appropriate signals to the server to convey the binary representation of the character. 
-        - The server then interprets these signals to reconstruct the original character.
+- As the `send_bits` function iterates through each bit of the character, it sends the appropriate signals to the server to convey the binary representation of the character. 
+- The server then interprets these signals to reconstruct the original character.
+    
 
 🔹 **7.  We need it to print the string quickly. What changes the duration of the printing?**
-    - Recall, the `usleep()` function is a high-precision delay mechanism that suspends a program while it waits for a signal, then the next, and so on. 
-        - Depending on the system's behaviour and performance, the `usleep()` value should be adjusted accordingly. 
-            - Too much of a delay can cause printing to be too slow.
-            - Too less of a delay and it can cause overhead to your program reducing performance, for example, it may not print correctly.
+- Recall, the `usleep()` function is a high-precision delay mechanism that suspends a program while it waits for a signal, then the next, and so on. 
+    - Depending on the system's behaviour and performance, the `usleep()` value should be adjusted accordingly. 
+        - Too much of a delay can cause printing to be too slow.
+        - Too less of a delay and it can cause overhead to your program reducing performance, for example, it may not print correctly.
+
 
 🔹 **8. How can the server receive strings from several clients in a row without restarting?**
-    - This means, after a server has started, multiple clients (e.g., from different terminals or command lines), can keep sending messages, one after another, and the server would recieve them all, one at a time.
-        - So, our server should have a loop where it waits for and processes incoming signals. The processing in this case would be printing the received string.
-        - Recall, the `pause()`` function is used in signal handling to wait for a specific signal before proceeding with further exeution.
+- This means, after a server has started, multiple clients (e.g., from different terminals or command lines), can keep sending messages, one after another, and the server would recieve them all, one at a time.
+    - So, our server should have a loop where it waits for and processes incoming signals. The processing in this case would be printing the received string.
+    - Recall, the `pause()`` function is used in signal handling to wait for a specific signal before proceeding with further exeution.
 
 
 ## 🔷 Step 5: Write the structure of directories and files
-    - I chose to utilise my libft in this program.
+- I chose to utilise my libft in this program.
 
-    ```
-    Minitalk/
-    │
+```
+Minitalk/
+│
+├── Makefile
+│
+├── inc/
+│   ├── minitalk.h
+│   └── minitalk_bonus.h 
+│
+├── srcs/
+│   ├── client.c
+│   ├── server.c
+│   ├── client_bonus.c
+│   └── server_bonus.c
+│
+└── libft/
     ├── Makefile
     │
     ├── inc/
-    │   ├── minitalk.h
-    │   └── minitalk_bonus.h 
     │
-    ├── srcs/
-    │   ├── client.c
-    │   ├── server.c
-    │   ├── client_bonus.c
-    │   └── server_bonus.c
-    │
-    └── libft/
-        ├── Makefile
-        │
-        ├── inc/
-        │
-        └── src/
-    ```
+    └── src/
+```
 
 ## 🔷 Step 6: Code Minitalk
 Now that we understand what Minitalk entails, let's write some pseudocode to see how we might tackle this project
