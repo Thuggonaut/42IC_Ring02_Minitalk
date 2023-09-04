@@ -14,7 +14,7 @@ void	sig_handler(int sig, siginfo_t *info, void *context) //Define a function as
 		ft_printf("%c", i); 
 		bit = 0; 
 		i = 0;
-		kill(info->si_pid, SIGUSR2); //Send a `SIGUSR2` signal back to the client to confirm that the character has been received. See #2
+		kill(info->si_pid, SIGUSR2); //Send a `SIGUSR2` signal back to the client to confirm that the character has been received. See #2. The `SA_SIGINFO` flag sends `si_pid` additional information (info->si_pid)
 	}
 }
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	ft_printf("Waiting for a message...\n"); 
 	sig.sa_sigaction = sig_handler; //Configure the sigaction struct to handle signals upon receiving. It sets `sig_handler` as the signal handler. See #3
 	sigemptyset(&sig.sa_mask); //Empty/clear the signal mask. See #4
-	sig.sa_flags = SA_SIGINFO; //??????????????????
+	sig.sa_flags = SA_SIGINFO; //Enable `sig_handler()` to receive additional information about the signal, in order to send a confirmation signal back to the sender with the sender's process ID (si_pid). 
 	while (argc == 1)
 	{
 		sigaction(SIGUSR1, &sig, NULL); //Set up the signal handlers for SIGUSR1 and SIGUSR2 signals, in this case, both are handled the same. `&sig` refers to the `struct sigaction` `sig` that was earlier configured
@@ -89,7 +89,7 @@ int	main(int argc, char **argv)
 	When this line is executed, it sends a `SIGUSR2` signal to the process (server) with the process ID stored in `info->si_pid`. 
 		- The server is programmed to handle this signal as part of its signal handling mechanism. 
 		- When the server receives the `SIGUSR2` signal, it knows that the corresponding byte was received by the client and successfully processed. 
-		- This forms the basis of the acknowledgment mechanism in the minitalk project, ensuring reliable communication between the client and server.
+		- This forms the basis of the acknowledgment mechanism, ensuring reliable communication between the client and server.
 
 	Why is SIGUSR2 being used?
 		- While you could use either SIGUSR1 or SIGUSR2 for confirmation, there are a few considerations that might lead to choosing one over the other:
@@ -109,7 +109,7 @@ int	main(int argc, char **argv)
     			sigset_t sa_mask;
     			int sa_flags;
     			void (*sa_restorer)(void);
-			};
+			}
 
 		- `sa_handler`: 
 		  This is a function pointer that specifies the handler function to be called when the signal is received. 

@@ -945,3 +945,33 @@ Test Bonus Features (if applicable):
 Test them in a similar way. Make sure we have the necessary files (client_bonus.c, server_bonus.c, etc.) compiled and ready to execute.
 
 Remember to adjust any necessary parameters, such as the communication speed (using usleep) as needed. 
+
+
+EVALUATION CHECKLIST:
+
+Prerequisites:
+- The project submitted has the correct directory and file names, and only includes the neccessary files: Makefile; server.c; client.c; (if Bonus part was done: server_bonus.c; client_bonus.c).
+- The Makefile must output with the flags -Wall, -Wextra and -Werror and not relink.
+- The Makefile must contain the rules $(NAME), all, clean, fclean and re. (And bonus rule if required.)
+- There are no Norminette errors.
+- There are no compilation errors. 
+
+General instructions:
+- The Makefile compiles both executables.
+- The server name is "server" and it prints its PID at launch.
+- The client name is "client" and it runs as follows:
+    `./client <PID> <STRING>`
+
+Message transmission:
+- It's possible to pass on a message of any size.
+- The server displays the messages received from the client, and prints the message correctly.
+
+Simple setup:
+- The server can recieve multiple strings without needing to be restarted. For example, the server is in a state of continous waiting to receive a message.
+- If used, only one global variable is allowed, and an explanation is needed if used.
+- The communication is only via the SIGUSR1 and SIGUSR2 signals.
+
+Bonus part:
+- Unicode characters are supported by both client and server, and it can be explained how it is made possible.
+- The server acknowledges reciept of the message recieved, and sends the acknowledgment to the client for each signal. 
+

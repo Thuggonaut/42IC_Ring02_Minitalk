@@ -79,9 +79,7 @@ int	main(int argc, char **argv) //`argv` is a pointer to an array of strings. By
 #2	The `100` microseconds value is not arbitrary.
 		- `100` microseconds have been chosen based on testing with the system's characteristics. 
 		- It's a balance between providing the server enough time to process signals and minimizing the delay in transmitting the entire message. 
-		- However, depending on the system's performance, we might need to adjust this value to achieve the best results.
-
-	In practice, we might need to fine-tune this value based on the system's behavior and performance characteristics. 
+		- In practice, we might need to adjust this value based on the system's behavior and performance characteristics. 
 		- We can experiment with different values to determine the optimal delay that allows reliable signal processing without introducing unnecessary 
 		  overhead.
 */
