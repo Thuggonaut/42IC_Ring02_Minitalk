@@ -5,7 +5,7 @@ static void	sig_confirm(int sig) //Define a static function that takes in an int
 	if (sig == SIGUSR1)
 		ft_printf("Message received\n");
 	else //If SIGUSR2
-		ft_printf("Message received\n"); //Both SIGUSR1 and SIGUSR2 represent a "message" 
+		ft_printf("Message received\n"); 
 }
 
 void	send_bits(pid_t pid, char c) 
@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 		msg = argv[2];
 		while (*msg != '\0') 
 		{
-			signal(SIGUSR1, sig_confirm); //Each time a signal is received, acknowledge reciept
+			signal(SIGUSR1, sig_confirm); //Each time a signal is received, it is the server acknowledging reciept
 			signal(SIGUSR2, sig_confirm);
 			send_bits(pid, *msg); 
 			msg++; 
