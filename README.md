@@ -799,7 +799,7 @@ Ensure you pass the following as required by the project before submission:
 
 🔸 **1. Prerequisites:**
 - [ ] The project submitted has the correct directory and file names, and only includes the neccessary files: `Makefile`; `server.c`; `client.c`; (if Bonus part was done: `server_bonus.c`; `client_bonus.c`).
-- [ ] The Makefile must output with the flags -Wall, -Wextra and -Werror and not relink.
+- [ ] The Makefile must output with the flags `-Wall`, `-Wextra` and `-Werror` and not relink.
 - [ ] The Makefile must contain the rules $(NAME), all, clean, fclean and re. (And bonus rule if required.)
 - [ ] There are no Norminette errors.
 - [ ] There are no compilation errors. 
