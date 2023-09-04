@@ -2,7 +2,7 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list *next_node;
+	t_list	*next_node;
 
 	if (!*lst)
 		return ;

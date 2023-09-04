@@ -3,7 +3,7 @@
 int	ft_handle_string(va_list ap)
 {
 	char	*s;
-	int	i;
+	int		i;
 
 	s = va_arg(ap, char *);
 	if (!s)

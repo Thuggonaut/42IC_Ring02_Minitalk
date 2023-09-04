@@ -4,7 +4,7 @@
 int	ft_putnbr_base(unsigned long long nb, const char *base)
 {
 	unsigned long long	len;
-	int			count;
+	int					count;
 
 	count = 0;
 	len = ft_strlen(base);

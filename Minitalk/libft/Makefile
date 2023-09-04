@@ -82,15 +82,12 @@ OBJ 			= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))
 # Build rules
 all: 			$(NAME)
 
-
 $(NAME): 		$(OBJ)
 				@$(AR) $(NAME) $(OBJ)
-
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
 				@mkdir -p $(@D)
 				@$(CC) $(CFLAGS) $(INC) -c $< -o $@
-
 
 clean:
 				@$(RM) -r $(OBJ_DIR)
@@ -99,8 +96,6 @@ clean:
 fclean: 		clean
 				@$(RM) $(NAME)
 
-
 re: 			fclean all
-
 
 .PHONY: 		all clean fclean re

@@ -28,8 +28,8 @@ static char	*word_dup(const char *s, int start, int end)
 
 	i = 0;
 	word = malloc((end - start + 1) * sizeof(char));
-    if (!word)
-    {
+	if (!word)
+	{
 		return (NULL);
 	}
 	while (start < end)
@@ -52,32 +52,31 @@ static char	**free_array(char **arr, size_t k)
 	return (NULL);
 }
 
-static char **result_array(size_t size, char **res_arr, char const *s, char c)
+static char	**result_array(size_t size, char **res_arr, char const *s, char c)
 {
-    size_t i;
-    size_t start;
-    size_t end;
+	size_t	i;
+	size_t	start;
+	size_t	end;
 
-    i = 0;
-    start = 0;
-    end = 0;
-    while (i < size)
-    {
-        while (s[start] == c)
-            start++;
-        end = start;
-        while (s[end] && s[end] != c)
-            end++;
-        res_arr[i] = word_dup(s, start, end);
-        if (!res_arr[i])
-            return (free_array(res_arr, i));
-        start = end;
-        i++;
-    }
-    res_arr[i] = NULL;
-    return (res_arr);
+	i = 0;
+	start = 0;
+	end = 0;
+	while (i < size)
+	{
+		while (s[start] == c)
+			start++;
+		end = start;
+		while (s[end] && s[end] != c)
+			end++;
+		res_arr[i] = word_dup(s, start, end);
+		if (!res_arr[i])
+			return (free_array(res_arr, i));
+		start = end;
+		i++;
+	}
+	res_arr[i] = NULL;
+	return (res_arr);
 }
-
 
 char	**ft_split(char const *s, char c)
 {

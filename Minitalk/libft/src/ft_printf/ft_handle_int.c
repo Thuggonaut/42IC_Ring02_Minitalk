@@ -3,7 +3,7 @@
 int	ft_handle_int(va_list ap)
 {
 	long long	n;
-	int		neg;
+	int			neg;
 
 	n = va_arg(ap, int);
 	neg = 0;
