@@ -3,7 +3,7 @@
 The purpose of this project is to code a small data exchange program using UNIX signals.
 
 
-## Preface:
+## 🔷 Preface:
 - While this project has the reputation of being "easy", it was intimidating to me. The concept of "signals" was so foreign and it took me some time to understand it, but we got there. 
 - What gave me the 💡 moment, was the metaphor of using the SIGUSR1 and SIGUSR2 signals to communicate between the clients and servers like you would with Morse code.
 - Keep an eye out for the **"🔑Key"** words, that will imply significance for coding our program.
