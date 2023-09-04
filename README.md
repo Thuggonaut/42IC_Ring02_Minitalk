@@ -1,6 +1,6 @@
 # ☎️ Minitalk:
 
-The purpose of this project is to code a small data change program using UNIX signals.
+The purpose of this project is to code a small data exchange program using UNIX signals.
 
 
 ## Preface:
