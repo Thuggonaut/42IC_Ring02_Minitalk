@@ -7,8 +7,8 @@ The purpose of this project is to code a small data change program using UNIX si
 - While this project has the reputation of being "easy", it was intimidating to me. The concept of "signals" was so foreign and it took me some time to understand it, but we got there. 
 - What gave me the :lightbulb moment, was the metaphor of using the SIGUSR1 and SIGUSR2 signals to communicate between the clients and servers like you would with Morse code.
 - Keep an eye out for the **"Key"** words, that will imply significance for coding our program.
-- We will be completing both the [Mandatory] and [Bonus] parts. Here is the outline:
-	- Step 1: [Learn UNIX signals]
+- We will be completing both the [Mandatory](https://github.com/Thuggonaut/42IC_Ring02_Minitalk/blob/main/README.md#the-mandatory-part) and [Bonus](https://github.com/Thuggonaut/42IC_Ring02_Minitalk/blob/main/README.md#the-bonus-part) parts. Here is the outline:
+	- Step 1: [Learn UNIX signals](https://github.com/Thuggonaut/42IC_Ring02_Minitalk/blob/main/README.md#step-1-learn-unix-signals)
 	- Step 2: [Understand SIGUSR1 and SIGUSR2 signals]
 	- Step 3: [Learn the functions permitted for use]
 	- Step 4: [Understand the Minitalk assignment and concepts]
