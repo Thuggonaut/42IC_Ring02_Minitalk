@@ -669,7 +669,7 @@ Only SIGUSR1 and SIGUSR2 signals are permitted for use.
 
 
 ## 🔷 Step 5: Write the structure of directories and files
-- I chose to utilise my libft in this program.
+I chose to utilise my libft in this program.
 
 ```
 Minitalk/
