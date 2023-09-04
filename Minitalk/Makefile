@@ -32,6 +32,9 @@ start:
 					@make all
 					@make bonus
 
+$(LIBFT):
+					@make -C ./libft
+
 all:				$(NAME) $(SVR)		
 
 $(NAME):			$(OBJCL) $(LIBFT)
