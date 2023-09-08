@@ -756,7 +756,8 @@ Now that we understand what Minitalk entails, let's write some pseudocode to see
 🔹 **3. Observe the Output:**
 - The client will send the message to the server using signals. 
 - We should see the message being displayed on the server terminal. 
-- The message should appear character by character, and for the bonus, the "acknowledgement" should be sent for each character.
+- The message should appear character by character, and for the bonus, the "acknowledgement" should be sent by the server for each character.
+	-  For each character in the message, a "acknowledgement of reciept" should be displayed by the client.
 - Observe the speed of the printing at the server's end, and adjust the `usleep()` value accordingly per system's behaviour and performance.
 
 🔹 **Repeat Testing:**
