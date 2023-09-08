@@ -626,7 +626,7 @@ Only SIGUSR1 and SIGUSR2 signals are permitted for use.
     - If each character can be represented by 8 bits in binary, and binary is composed of 0s and 1s, then:
         - We can use for instance, SIGUSR1 for the binary digit 1, and SIGUSR2 for the binary digit 0 to encode and decode our strings.
         - This is where bitwise operations comes in to play.
-        - For the client, we can iterate through each bit (binary digit) of a character, and send the server the relevant signals depending on whether it's a 0 or 1(like Morse code :smile). 
+        - For the client, we can iterate through each bit (binary digit) of a character, and send the server the relevant signals depending on whether it's a 0 or 1(like Morse code 😄). 
         - For example:
 
         - The character 'A' (ASCII value 65):
