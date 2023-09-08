@@ -651,7 +651,7 @@ Only SIGUSR1 and SIGUSR2 signals are permitted for use.
 
 🔹 **6. How do we get the server to print the string received from the client?**
 - As the `send_bits` function iterates through each bit of the character, it sends the appropriate signals to the server to convey the binary representation of the character. 
-- The server then interprets these signals to reconstruct the original character.
+- The server then interprets these signals to reconstruct the original character. Once a character is reconstructed, it can be printed.
     
 
 🔹 **7.  We need it to print the string quickly. What changes the duration of the printing?**
