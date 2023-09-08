@@ -610,8 +610,7 @@ Only SIGUSR1 and SIGUSR2 signals are permitted for use.
 🔹 **4. What is a PID?**
 - A Process Identifier (PID) is a unique number used to uniquely identify an active process.
 - This number may be used as a parameter in various function calls, allowing processes to be manipulated, such as adjusting the process's priority or killing it altogether.
-- The current process ID is provided by a getpid() system call. 
-    - The process ID of a parent process is obtainable by a getpid() system call. 
+- The current process ID is provided by a getpid() system call.  
 - In the context of our assignment, the server will print its PID after it launches. 
     - The client program needs to know the server's PID to send signals to it. 
     - This is why the server's PID is one of the parameters that the client takes. We will input the server's PID when we run the client program.
