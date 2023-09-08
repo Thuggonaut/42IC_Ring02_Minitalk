@@ -664,7 +664,7 @@ Only SIGUSR1 and SIGUSR2 signals are permitted for use.
 🔹 **8. How can the server receive strings from several clients in a row without restarting?**
 - This means, after a server has started, multiple clients (e.g., from different terminals or command lines), can keep sending messages, one after another, and the server would recieve them all, one at a time.
     - So, our server should have a loop where it waits for and processes incoming signals. The processing in this case would be printing the received string.
-    - Recall, the `pause()`` function is used in signal handling to wait for a specific signal before proceeding with further exeution.
+    - Recall, the `pause()`` function is used in signal handling to wait for a specific signal before proceeding with further execution.
 
 
 ## 🔷 Step 5: Write the structure of directories and files
